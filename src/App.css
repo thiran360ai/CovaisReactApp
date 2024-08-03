@@ -103,7 +103,7 @@ body {
 
 .card {
   width: 100%;
-  max-width: 500px;
+  max-width: 100px;
   background-image: url('./img/backkiii.jpg');
   border-radius: 20px;
   transition: all 0.3s;
@@ -172,7 +172,7 @@ body {
 }
 
 .nft-card {
-  max-width: 350px; /* Increased width */
+  max-width: 500px; /* Increased width */
   margin: 1rem;
   border: 1px solid #ffffff22;
   background-color: #282c34;
