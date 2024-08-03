@@ -172,7 +172,7 @@ body {
 }
 
 .nft-card {
-  max-width: 1000px; /* Increased width */
+  max-width: 1200px; /* Increased width */
   margin: 1rem;
   border: 1px solid #ffffff22;
   background-color: #282c34;
@@ -189,6 +189,7 @@ body {
   text-align: center;
   padding: 1rem; /* Added padding inside the card */
 }
+
 
 .nft-card hr {
   width: 100%;
