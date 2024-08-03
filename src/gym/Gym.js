@@ -69,7 +69,7 @@ function App() {
             <Card.Body>
               <Card.Title>Group Classes</Card.Title>
               <Card.Text>
-                Motivating group sessions led by expert instructors. Select classes that align with your fitness level, interests, and goals. The idea behind group personal training is exercise.
+                Motivating group sessions led by expert instructors. Select classes that align with your fitness level, interests, and goals.The idea behind group personal training is exercise.
               </Card.Text>
               <Button variant="primary" onClick={handleBookNowClick}>Book Now</Button>
             </Card.Body>
@@ -86,31 +86,6 @@ function App() {
           </Card>
         </div>
       </Container>
-
-      {/* Footer */}
-      <footer className="footer bg-dark text-white text-center py-3 mt-5">
-        <Container>
-          <Row>
-            <Col md={4}>
-              <h5>About Us</h5>
-              <p>We are committed to providing the best fitness experience. Join us to reach your fitness goals.</p>
-            </Col>
-            <Col md={4}>
-              <h5>Contact Us</h5>
-              <p>Email: info@mygym.com</p>
-              <p>Phone: +123 456 7890</p>
-            </Col>
-            <Col md={4}>
-              <h5>Follow Us</h5>
-              <p>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white">Facebook</a><br />
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white">Instagram</a><br />
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white">Twitter</a>
-              </p>
-            </Col>
-          </Row>
-        </Container>
-      </footer>
     </div>
   );
 }

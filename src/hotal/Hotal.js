@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Container, Button, Carousel, Form } from 'react-bootstrap';
 import logo from '../img/logo.jpg'; // Import your logo file
-import './common.css'; // Import your CSS file
+import './hotal.css'; // Import your CSS file
 import image from './image/image 1.jpg';
 import image2 from './image/nkm.jpg';
 import image3 from './image/pic.jpg';

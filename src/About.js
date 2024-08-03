@@ -44,7 +44,7 @@ function About() {
       img: pro5,
       name: 'Team 5',
       title: 'Backend Developer',
-      description: 'Lead backend dev at Clearbit. Former Clearbit and Loom.',
+      description: 'Lead backend dev at Clearbit.give src for all sorce Former Clearbit and Loom.',
       linkedin: 'https://www.linkedin.com/in/candicewu/',
       twitter: 'https://twitter.com/candicewu'
     }

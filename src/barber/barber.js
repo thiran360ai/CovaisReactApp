@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './barber.css';
 import './ContactUs.css';
-import './Footer.css';
 import slide1 from './images/s7.jpg';
 import slide2 from './images/s8.jpg';
 import slide3 from './images/s6.jpg';
@@ -68,40 +67,6 @@ const Services = () => {
   );
 };
 
-const Footer = () => (
-  <footer className="footer">
-    <div className="footer-content">
-      <div className="footer-info">
-        <p>&copy; 2024 Barber Shop. All rights reserved.</p>
-        <div className="contact-info">
-          <p>123 Barber St, Hair City, HC 12345</p>
-          <p>Email: info@barbershop.com</p>
-          <p>Phone: (123) 456-7890</p>
-        </div>
-      </div>
-      <div className="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
-      </div>
-      <div className="social-media">
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-twitter"></i>
-        </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-instagram"></i>
-        </a>
-      </div>
-    </div>
-  </footer>
-);
 
 const ContactUs = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -306,7 +271,7 @@ const App = () => (
       <Services />
       <ContactUs />
     </div>
-    <Footer />
+  
   </div>
 );
 

@@ -8,7 +8,7 @@ import img3 from './img/img (3).jpeg';
 import img4 from './img/img (4).jpeg';
 import logo from './img/logo.jpg';
 import About from './About';
-import Contact from './Contact';
+
 import Barber from './barber/barber'; // Ensure the file name matches
 import Hotel from './hotal/Hotal'; // Ensure the file name matches
 import Gym from './gym/Gym'; // Ensure the file name matches
@@ -136,7 +136,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/barber" element={<Barber />} />
           <Route path="/hotel" element={<Hotel />} />
           <Route path="/gym" element={<Gym />} />

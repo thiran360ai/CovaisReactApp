@@ -41,6 +41,7 @@ body {
 
 .header .logo {
   max-height: 40px; /* Adjust logo size if needed */
+  border-radius: 50px;
 }
 
 .header .navbar a {
@@ -62,6 +63,7 @@ body {
   width: 50px;
   height: 50px;
   margin-right: 1rem;
+  border-radius: 100px;
 }
 
 .company-name {
@@ -330,12 +332,13 @@ body {
 
 /* Footer Styling */
 .footer {
-  color: #fff; /* White text color */
+  color: #adaaaa; /* White text color */
   padding: 10px; /* Adjust padding as needed */
   text-align: center;
   position: fixed; /* Fixed position for watermark effect */
   bottom: 0;
   right: 0;
+  left: 100;
   margin: 0;
   opacity: 0.5; /* Slightly transparent for watermark effect */
   z-index: 1000; /* Ensure it's on top of other content */
