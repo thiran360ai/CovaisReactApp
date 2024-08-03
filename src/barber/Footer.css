@@ -1,0 +1,149 @@
+/* Ensure the footer is positioned relative to the content above it */
+.footer {
+  background-color: #070505;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 1s ease-out, slideInFromBottom 1s ease-out;
+  transition: background-color 0.5s ease, transform 0.5s ease;
+  margin-top: 50px; /* Add space above the footer */
+}
+
+.footer:hover {
+  background-color: #070606; /* Change background color on hover */
+  transform: scale(1.02); /* Slightly scale the footer on hover */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-info, .footer-links {
+  flex: 1;
+  margin: 10px;
+  animation: slideInFromLeft 1s ease-out;
+}
+
+.footer-info {
+  text-align: left;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+.footer-links {
+  text-align: center;
+  animation: slideInFromRight 1s ease-out;
+}
+
+.footer-links h4 {
+  margin-bottom: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin: 5px 0;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #f39c12;
+}
+
+.social-media {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  animation: fadeInIcons 1s ease-out 1s forwards;
+}
+
+.social-media a {
+  color: #fff;
+  font-size: 1.5em;
+  margin: 0 10px;
+  transition: transform 0.3s ease, color 0.3s ease, filter 0.3s ease;
+  text-decoration: none;
+  opacity: 0;
+  animation: fadeInIcons 1s ease-out 1.2s forwards;
+}
+
+.social-media a:hover {
+  color: #f39c12;
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* Animation for sliding in from the bottom */
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation for sliding in from the left */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation for sliding in from the right */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation for the footer text */
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation for the social media icons */
+@keyframes fadeInIcons {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

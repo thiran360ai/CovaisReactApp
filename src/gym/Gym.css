@@ -1,0 +1,99 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4; /* Light background color for the entire page */
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar Styles */
+.navbar {
+  margin-bottom: 20px;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+/* Carousel Styles */
+.carousel-img {
+  height: 500px; /* Fixed height for carousel images */
+  object-fit: cover; /* Ensures images cover the area without distortion */
+}
+
+/* Card Styles */
+.card-style {
+  width: 18rem;
+  margin: 10px;
+  transition: transform 0.3s ease; /* Smooth zoom effect */
+}
+
+.card-style:hover {
+  transform: scale(1.05); /* Zoom in effect on hover */
+}
+
+.card-img {
+  height: 200px; /* Fixed height for card images */
+  object-fit: cover; /* Ensures images cover the area without distortion */
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #343a40;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Booking Form Styles */
+.form-container {
+  padding: 20px;
+  background-color: #000000; /* Black background for the form */
+  color: #ffffff; /* White text color for the form */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.form-container button {
+  margin-top: 10px;
+}
+
+.form-container .form-group {
+  margin-bottom: 15px;
+}
+
+.form-container .form-control {
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+}
+
+.form-container .form-control:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
+
+/* Modal Styles */
+.modal-content {
+  border-radius: 5px;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none;
+}
+

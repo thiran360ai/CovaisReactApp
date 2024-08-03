@@ -1,0 +1,204 @@
+/* General container styling */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; /* Aligns children vertically */
+  }
+  
+  /* Styling for the logo section */
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distributes space between items */
+    margin-bottom: 20px;
+  }
+  
+  .logo img {
+    width: 100px; /* Adjust width as needed */
+    height: auto;
+  }
+  
+  .logo h1 {
+    font-size: 2rem;
+    color: #333;
+    margin: 0;
+  }
+  
+  /* Styling for the contact details */
+  .contact {
+    margin-bottom: 30px;
+  }
+  
+  /* Flexbox alignment for contact details */
+/* Contact Section */
+.contact {
+    padding: 30px;
+    background-color: #fff;
+    text-align: center;
+    animation: fadeIn 2s ease-out;
+  }
+  
+  .contact h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    animation: slideInFromTop 1s ease-out;
+  }
+  
+  .contact p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 10px 0;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+  }
+  
+  .contact p:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .contact p:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  .contact p:nth-child(4) {
+    animation-delay: 0.6s;
+  }
+  
+  .contact p:nth-child(5) {
+    animation-delay: 0.8s;
+  }
+  
+  .contact p:nth-child(6) {
+    animation-delay: 1s;
+  }
+  
+  .contact p:nth-child(7) {
+    animation-delay: 1.2s;
+  }
+  
+  .contact p:nth-child(8) {
+    animation-delay: 1.4s;
+  }
+  
+  .contact p:nth-child(9) {
+    animation-delay: 1.6s;
+  }
+  
+  .contact p:nth-child(10) {
+    animation-delay: 1.8s;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInFromTop {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Styling for the social media links */
+  .social {
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    align-items: center; /* Center align items horizontally */
+    margin-bottom: 30px;
+  }
+  
+  .social h2 {
+    font-size: 1.5rem;
+    color: #6013ef;
+    margin-bottom: 15px;
+    text-align: center; /* Center align heading */
+  }
+  
+  .social a {
+    text-decoration: none;
+    color: #1528bd;
+    margin: 5px; /* Space between icons */
+    font-size: 2rem;
+  }
+  
+  .social a:hover {
+    color: #0de4ae; /* Change color on hover */
+  }
+  
+  .social i {
+    font-size: 2rem; /* Adjust icon size */
+  }
+  
+  /* Styling for the join the team section */
+  .team {
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    align-items: center; /* Center align items horizontally */
+    margin-top: 30px;
+  }
+  
+  .team h2 {
+    font-size: 1.5rem;
+    color: #e1a91b;
+    margin-bottom: 10px;
+    text-align: center; /* Center align heading */
+  }
+  
+  .team a {
+    text-decoration: none;
+    color: #0073e6;
+    font-weight: bold;
+  }
+  
+  .team a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Styling for links (a elements) */
+  a {
+    text-decoration: none;
+    color: #0073e6;
+    font-weight: bold;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .logo {
+      flex-direction: column; /* Stack logo image and text vertically on small screens */
+      align-items: center; /* Center align logo items horizontally */
+    }
+    
+    .social {
+      flex-direction: row; /* Align social media icons horizontally on small screens */
+    }
+  }
+  

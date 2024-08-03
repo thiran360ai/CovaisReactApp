@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensures the container fills the viewport height */
+ /* Light background color for contrast */
+}
+
+.team-members {
+  display: flex;
+  flex-direction: row; /* Display cards in a row */
+  gap: 20px; /* Spacing between cards */
+  align-items: center; /* Center the cards vertically */
+  max-width: 1200px; /* Limit the width for larger screens */
+  overflow-x: auto; /* Allow horizontal scrolling if cards exceed viewport width */
+  padding: 20px;
+}
+
+.member {
+  background: #b8b5b5;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 20px;
+  max-width: 250px; /* Adjust card width as needed */
+  flex: 0 0 auto; /* Prevent cards from shrinking */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.member:hover {
+  transform: translateY(-10px); /* Slight lift effect on hover */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.member img {
+  width: 100px; /* Fixed width for all images */
+  height: 100px; /* Fixed height for all images */
+  object-fit: cover; /* Ensure images cover the area without distortion */
+  border-radius: 50%;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.member img:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.social-icons a {
+  margin: 0 8px;
+  color: #333;
+  font-size: 1.5em;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #0073b1; /* LinkedIn color */
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.social-icons a[href*='twitter'] {
+  color: #1da1f2; /* Twitter color */
+}
+
+.member h3 {
+  margin: 10px 0 5px;
+  font-size: 1.2em; /* Adjust heading size */
+  color: #333; /* Darker color for better readability */
+}
+
+.member p {
+  margin: 5px 0;
+  color: #ffffff; /* Slightly lighter color for secondary text */
+  line-height: 1.5; /* Improved line height for readability */
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.member {
+  animation: fadeInUp 0.5s ease-out;
+}
