@@ -172,7 +172,8 @@ body {
 }
 
 .nft-card {
-  max-width: 1200px; /* Increased width */
+  width: 300px;
+  max-width: 1000px; /* Increase this value to make the card wider */
   margin: 1rem;
   border: 1px solid #ffffff22;
   background-color: #282c34;
@@ -187,8 +188,16 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 1rem; /* Added padding inside the card */
+  padding: 1rem; /* Add padding inside the card for spacing */
 }
+
+.nft-card:hover {
+  border: 1px solid #ffffff44;
+  box-shadow: 0 7px 50px 10px #000000aa;
+  transform: scale(1.02); /* Slightly less scaling for a subtle effect */
+  filter: brightness(1.2);
+}
+
 
 
 .nft-card hr {
