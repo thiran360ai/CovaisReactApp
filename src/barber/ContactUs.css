@@ -3,37 +3,38 @@
   max-width: 600px;
   margin: 50px auto;
   padding: 20px;
-  background-color: #f6f5f5;
+  background-color: #0a0a0a; /* Adjust the background color here */
+  background-size: cover;
+  background-position: center;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  /* Add your image path here */
-  background-size: cover;
   color: #311919; /* Ensure text color is visible against the background */
 }
 
 .contact-us h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #441539;
+  color: #f8f7f8;
 }
 
 .contact-us form {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  color: #030303;
 }
 
 .contact-us label {
   font-weight: bold;
   margin-bottom: 5px;
-  color: #030303;
+  color: #f7f5f5;
 }
 
 .contact-us input,
 .contact-us textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #fffefe;
   border-radius: 5px;
   box-sizing: border-box;
   transition: border-color 0.3s ease;
@@ -47,7 +48,7 @@
 .contact-us button {
   padding: 10px 20px;
   background-color: #e95009;
-  color: #fff;
+  color: #fdfbfb;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -65,7 +66,7 @@
 
 .submission-success h3 {
   margin-top: 20px;
-  color: #fdf9f9;
+  color: #faf9f9;
 }
 
 .tick-mark {

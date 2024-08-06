@@ -1,74 +1,73 @@
 import React from 'react';
 import './about.css';
-import pro1 from './img/prod3.png';
-import pro2 from './img/prog5.jpg';
-import pro3 from './img/progf1.jpg';
-import pro4 from './img/proj2.png';
-import pro5 from './img/pros4.jpg';
 
 function About() {
-  const teamMembers = [
-    {
-      img: pro1,
-      name: 'Team 1',
-      title: 'Developers',
-      description: 'Former frontend, Backend & Designing dev for Linear, VScode.',
-      linkedin: 'https://www.linkedin.com/in/oliviarhye/',
-      twitter: 'https://twitter.com/oliviarhye'
-    },
-    {
-      img: pro2,
-      name: 'Team 2',
-      title: 'Designer',
-      description: 'Lead engineering teams at Figma, Pitch, and Protocol Labs.',
-      linkedin: 'https://www.linkedin.com/in/phoenixbaker/',
-      twitter: 'https://twitter.com/phoenixbaker'
-    },
-    {
-      img: pro3,
-      name: 'Team 3',
-      title: 'Product Manager',
-      description: 'Former PM for Linear, Lambda School, and On Deck.',
-      linkedin: 'https://www.linkedin.com/in/lanasteiner/',
-      twitter: 'https://twitter.com/lanasteiner'
-    },
-    {
-      img: pro4,
-      name: 'Team 4',
-      title: 'Frontend Developer',
-      description: 'Former frontend dev for Linear, Coinbase, and Postscript.',
-      linkedin: 'https://www.linkedin.com/in/demiwilkinson/',
-      twitter: 'https://twitter.com/demiwilkinson'
-    },
-    {
-      img: pro5,
-      name: 'Team 5',
-      title: 'Backend Developer',
-      description: 'Lead backend dev at Clearbit.give src for all sorce Former Clearbit and Loom.',
-      linkedin: 'https://www.linkedin.com/in/candicewu/',
-      twitter: 'https://twitter.com/candicewu'
-    }
-  ];
-
   return (
     <div className="container">
-      <div className="team-members">
-        {teamMembers.map((member, index) => (
-          <div className="member" key={index}>
-            <img src={member.img} alt={member.name} />
-            <h3>{member.name}</h3>
-            <p>{member.title}</p>
-            <p>{member.description}</p>
-            <div className="social-icons">
-              <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-              <a href={member.twitter} target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-twitter"></i>
-              </a>
-            </div>
+      <div className="contact-section">
+        <h2>CONTACT US</h2>
+        <div className="address">
+          <i className="fas fa-map-marker-alt"></i>
+          <p>The Paul Bangalore, 139/28, Domlur Layout, Opp. Embassy Golf Links, Off Intermediate Ring Road, Bangalore - 560 071</p>
+        </div>
+        <div className="phone">
+          <i className="fas fa-phone-alt"></i>
+          <p>+91 80 40477777</p>
+        </div>
+        <div className="email">
+          <i className="fas fa-envelope"></i>
+          <p>reservationstpb@thepaul.in</p>
+        </div>
+        <p>If you would prefer to have your travel arrangements made for you by your travel professionals, they will be familiar with the Global Distribution System (GDS) which routes your enquiry directly to the global reservation system.</p>
+      </div>
+      <div className="email-section">
+        <h2>SEND AN EMAIL</h2>
+        <p>* Required field.</p>
+        <form>
+          <div className="input-group">
+            <label htmlFor="first-name">First Name *</label>
+            <input type="text" id="first-name" required />
           </div>
-        ))}
+          <div className="input-group">
+            <label htmlFor="last-name">Last Name *</label>
+            <input type="text" id="last-name" required />
+          </div>
+          <div className="input-group">
+            <label htmlFor="email">Email *</label>
+            <input type="email" id="email" required />
+          </div>
+          <div className="input-group">
+            <label htmlFor="phone">Phone *</label>
+            <input type="tel" id="phone" required />
+          </div>
+          <div className="input-group">
+            <label htmlFor="city">City *</label>
+            <input type="text" id="city" required />
+          </div>
+          <div className="input-group">
+            <label htmlFor="country">Country *</label>
+            <input type="text" id="country" required />
+          </div>
+          <div className="input-group">
+            <label htmlFor="subject">Subject *</label>
+            <input type="text" id="subject" required />
+          </div>
+          <div className="input-group">
+            <label htmlFor="accomodation">Select type of Accommodation *</label>
+            <select id="accomodation" required>
+              <option value="">Select an option</option>
+              <option value="hotel">Hotel</option>
+              <option value="resort">Spa</option>
+              <option value="villa">Baber shop</option>
+              <option value="villa1">Gym</option>
+            </select>
+          </div>
+          <div className="input-group">
+            <label htmlFor="message">Message *</label>
+            <textarea id="message" required></textarea>
+          </div>
+          <button type="submit">Send</button>
+        </form>
       </div>
     </div>
   );

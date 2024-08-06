@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+
+import React, { useState, memo } from 'react';
 import './spa.css'; // Import the CSS file
 import massageImg from './image/massage.jpg';
 import facialImg from './image/facial.jpg';
 import headImg from './image/head.jpg';
 import HeroSectionImg from './image/background.jpg';
+
+
 
 // Main App Component
 function App() {
@@ -68,24 +71,32 @@ function Services({ onBookNowClick }) {
   return (
     <section id="services" className="section">
       <h2 className="section-title">Our Services</h2>
-      <div className="service-container">
+      <div className="services-container">
         {services.map((service, index) => (
-          <div key={index} className="service">
-            <img src={service.image} alt={service.name} className="service-image" />
-            <h3 className="service-name">{service.name}</h3>
-            <p className="service-description">{service.description}</p>
-            <button 
-              onClick={onBookNowClick}
-              className="service-button"
-            >
-              Book Now
-            </button>
-          </div>
+          <ServiceItem 
+            key={index}
+            service={service}
+            onBookNowClick={onBookNowClick}
+          />
         ))}
       </div>
     </section>
   );
 }
+
+// ServiceItem Component
+const ServiceItem = memo(({ service, onBookNowClick }) => {
+  return (
+    <div className="service">
+      <img src={service.image} alt={service.name} className="service-image" />
+      <h3 className="service-name">{service.name}</h3>
+      <p className="service-description">{service.description}</p>
+      <button onClick={onBookNowClick} className="service-button">
+        Book Now
+      </button>
+    </div>
+  );
+});
 
 // Testimonials Component
 function Testimonials() {
@@ -111,7 +122,7 @@ function Testimonials() {
 
 // Feedback Component
 function Feedback() {
-  const [formData, setFormData] = React.useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -178,131 +189,139 @@ function ContactForm() {
 }
 
 // BookingForm Component
-function BookingForm({ onClose }) {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    mobile: '',
-    address: '',
-    date: '',
-    time: '',
-    payment: '',
-  });
 
-  const [showConfirmation, setShowConfirmation] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+
+
+// BookingForm Compone
+
+
+
+
+const BookingForm = ({ handleBackToHomeClick }) => {
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [classType, setClassType] = useState('');
+  const [trainer, setTrainer] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    setFormData({
-      name: '',
-      email: '',
-      mobile: '',
-      address: '',
-      date: '',
-      time: '',
-      payment: '',
-    });
-    setShowConfirmation(true);
-    setTimeout(() => {
-      setShowConfirmation(false);
-    }, 3000);
+
+    // Construct the confirmation message
+    const confirmationMessage = `
+      Booking Confirmation
+      Date: ${date}
+      Time: ${time}
+      Class Type: ${classType}
+      Trainer: ${trainer}
+      Name: ${name}
+      Email: ${email}
+      Phone: ${phone}
+      Thank you for booking with us!
+    `;
+
+    // Construct WhatsApp URL
+    const whatsappNumber = '6381343407'; // The recipient's number
+    const whatsappMessage = encodeURIComponent(`Booking has been confirmed. ${confirmationMessage}`);
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+    // Open WhatsApp with the message
+    window.open(whatsappURL, '_blank');
+
+    setMessage('Booking Successful! A confirmation message has been prepared for WhatsApp.');
   };
 
   return (
-    <div className="form-container">
+    <div className="booking-form">
+      <h1>Spa Booking Page</h1>
       <form onSubmit={handleSubmit}>
-        <label className="label">
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="input"
-            required
+        <div className="form-group">
+          <label htmlFor="date">Date:</label>
+          <input 
+            type="date" 
+            id="date" 
+            value={date} 
+            onChange={(e) => setDate(e.target.value)} 
+            required 
           />
-        </label>
-        <label className="label">
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="input"
-            required
-          />
-        </label>
-        <label className="label">
-          Mobile Number:
-          <input
-            type="tel"
-            name="mobile"
-            value={formData.mobile}
-            onChange={handleChange}
-            className="input"
-            required
-          />
-        </label>
-        <label className="label">
-          Address:
-          <textarea
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            className="textarea"
-            required
-          />
-        </label>
-        <label className="label">
-          Date:
-          <input
-            type="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-            className="input"
-            required
-          />
-        </label>
-        <label className="label">
-          Time:
-          <input
-            type="time"
-            name="time"
-            value={formData.time}
-            onChange={handleChange}
-            className="input"
-            required
-          />
-        </label>
-        <label className="label">
-          Payment Information:
-          <input
-            type="text"
-            name="payment"
-            value={formData.payment}
-            onChange={handleChange}
-            className="input"
-            required
-          />
-        </label>
-        <button type="submit" className="button">Book Now</button>
-      </form>
-      {showConfirmation && (
-        <div className="confirmation-message">
-          <p>Your booking has been confirmed!</p>
         </div>
-      )}
-      <button onClick={onClose} className="close-button">Close</button>
+        <div className="form-group">
+          <label htmlFor="time">Time:</label>
+          <input 
+            type="time" 
+            id="time" 
+            value={time} 
+            onChange={(e) => setTime(e.target.value)} 
+            required 
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="classType">Class Type:</label>
+          <select 
+            id="classType" 
+            value={classType} 
+            onChange={(e) => setClassType(e.target.value)} 
+            required
+          >
+            <option value="">Select a class</option>
+            <option value="facial">facial</option>
+            <option value="headmassage">headmessage</option>
+            <option value="body massage">bodymassage</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="trainer">Trainer:</label>
+          <select 
+            id="trainer" 
+            value={trainer} 
+            onChange={(e) => setTrainer(e.target.value)} 
+            required
+          >
+            <option value="">Select a trainer</option>
+            <option value="john">John Doe</option>
+            <option value="jane">Jane Smith</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
+          <input 
+            type="text" 
+            id="name" 
+            value={name} 
+            onChange={(e) => setName(e.target.value)} 
+            required 
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input 
+            type="email" 
+            id="email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            required 
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="phone">Phone:</label>
+          <input 
+            type="tel" 
+            id="phone" 
+            value={phone} 
+            onChange={(e) => setPhone(e.target.value)} 
+            required 
+          />
+        </div>
+        <button type="submit">Book Now</button>
+      </form>
+      {message && <p className="message">{message}</p>}
+     
     </div>
   );
-}
+};
 
-export default App;
+export default BookingForm;

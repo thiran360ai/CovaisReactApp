@@ -1,35 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import './barber.css';
-import './ContactUs.css';
+
 import slide1 from './images/s7.jpg';
 import slide2 from './images/s8.jpg';
 import slide3 from './images/s6.jpg';
 import image1 from './images/card1.jpg';
 import image2 from './images/card2.jpg';
 import image3 from './images/card3.jpg';
+import node1 from './images/node3.jpg';
 
-// Components
-const Navbar = () => (
-  <nav className="navbar">
-    <div className="navbar-logo">
-      <h1>DUBAI SALOON</h1>
-    </div>
-    <ul className="navbar-menu">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div className="navbar-login">
-      <a href="#login" className="btn-login">Login</a>
-    </div>
-  </nav>
-);
+
 
 const About = () => (
-  <section id="about" className="about">
+  <section
+    id="about"
+    className="about"
+    style={{ background: `url(${node1})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+  >
     <div className="about-content">
       <h2>About Us</h2>
       <p>
@@ -67,13 +55,11 @@ const Services = () => {
   );
 };
 
-
 const ContactUs = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add your form submission logic here, such as sending data to a server
     setIsSubmitted(true);
   };
 
@@ -124,23 +110,50 @@ const Card = ({ title, description, image, buttonText, onBookNow }) => (
 );
 
 const BookingSlotPopup = ({ onClose }) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // Construct the confirmation message
+    const confirmationMessage = `
+      Booking Confirmation
+      Date: ${date}
+      Time: ${time}
+      Name: ${name}
+      Email: ${email}
+      Thank you for booking with us!
+    `;
+
+    // Construct WhatsApp URL
+    const whatsappNumber = '918838043691'; // The recipient's number
+    const whatsappMessage = encodeURIComponent(`Booking has been confirmed. ${confirmationMessage}`);
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+    // Open WhatsApp with the message
+    window.open(whatsappURL, '_blank');
+  };
+
   return (
     <div className="booking-slot-popup">
       <div className="booking-slot-popup-content">
         <button className="booking-slot-popup-close" onClick={onClose}>×</button>
         <h2>Select a Booking Slot</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" required />
+          <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
 
           <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" required />
+          <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
 
           <label htmlFor="date">Date:</label>
-          <input type="date" id="date" name="date" required />
+          <input type="date" id="date" value={date} onChange={(e) => setDate(e.target.value)} required />
 
           <label htmlFor="time">Time:</label>
-          <input type="time" id="time" name="time" required />
+          <input type="time" id="time" value={time} onChange={(e) => setTime(e.target.value)} required />
 
           <button type="submit">Confirm Booking</button>
         </form>
@@ -169,7 +182,7 @@ const CardContainer = () => {
     },
     {
       title: 'Shave',
-      description: 'Enjoy a relaxing shave with our premium products.',
+      description: 'Enjoy a relaxing shave with style and our premium products.',
       buttonText: 'Book Now',
       image: image2,
     },
@@ -261,17 +274,14 @@ const Banner = () => {
 
 const App = () => (
   <div className="App">
-    <Navbar />
     <div id="home">
-      
+     
       <About />
-      
       <CardContainer />
       <Banner />
       <Services />
       <ContactUs />
     </div>
-  
   </div>
 );
 
