@@ -20,6 +20,70 @@
     transform: rotate(360deg);
   }
 }
+/* Services Section */
+.services {
+  background-color: #070404;
+  padding: 40px 0;
+  margin-top: 40px;
+}
+
+.services h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.services .card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #070707;
+}
+
+.services .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.services .card-body {
+  padding: 20px;
+  background: #070707;
+}
+
+.services .card-title {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.services .card-text {
+  font-size: 1.2em;
+  color: #666;
+}
+
+.services .fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+/* Add to existing fadeIn keyframe animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .services .card {
+    margin-bottom: 20px;
+  }
+}
 
 @keyframes slideInFromBottom {
   from {
@@ -101,63 +165,6 @@ body {
   padding-left: 15px;
 }
 
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #333;
-  padding: 10px 20px;
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
-
-.navbar-logo h1 {
-  margin: 0;
-  font-size: 24px;
-  color: #f89808;
-}
-
-.navbar-menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 20px;
-}
-
-.navbar-menu li {
-  position: relative;
-}
-
-.navbar-menu a {
-  color: rgb(248, 248, 248);
-  text-decoration: none;
-  font-size: 18px;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.navbar-menu a:hover {
-  color: hsl(37, 93%, 49%);
-  transform: scale(1.1);
-}
-
-.navbar-menu a::after {
-  content: '';
-  display: block;
-  height: 2px;
-  background: hsl(30, 96%, 50%);
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 0;
-  transition: width 0.3s ease;
-}
-
-.navbar-menu a:hover::after {
-  width: 100%;
-}
 
 /* App */
 .App {
@@ -206,6 +213,7 @@ body {
   margin: 0 auto;
   padding: 20px;
   border-radius: 8px;
+  background: rgba(8, 8, 8, 0.8); /* Optional: to make content more readable */
   animation: fadeIn 1.5s ease-out;
 }
 
@@ -226,6 +234,7 @@ body {
   overflow: hidden;
   width: 100%;
   height: 465px;
+  padding: 10px;
 }
 
 .slide {
@@ -369,47 +378,7 @@ body {
 }
 
 /* Booking Form */
-.card {
-  display: flex;
-  padding: auto;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #a79c9c;
-  max-width: 300px;
-  margin: 15px auto;
-}
 
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.card-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 15px;
-  text-align: center;
-  color: #0f0e0e;
-}
-
-.card-content h2 {
-  margin: 0 0 10px;
-  font-size: 1.5em;
-}
-
-.card-content p {
-  margin: 0;
-  color: #020202;
-}
 
 /* Icons */
 .icon {
@@ -456,4 +425,201 @@ body {
   .card {
     max-width: 90%;
   }
+}
+/* General Styles for Services Section */
+.services {
+  background-color: #070707;
+  padding: 2rem 0;
+}
+
+.services h2 {
+  color: #fcfafa;
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+}
+
+.services .card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.services .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.services .card-title {
+  font-size: 1.5rem;
+  color: #e95009;
+}
+
+.services .card-text {
+  color: #fcf6f6;
+}
+
+/* Animation for Fade-in Effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+/* Card Component Styles */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  max-width: 300px;
+  margin: 20px auto;
+  
+    background-color: #070707;
+    padding: 2rem 0;
+  
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 15px;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.card-description {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+  color: #faf6f6;
+}
+
+.btn-17 {
+  padding: 10px 20px;
+  background-color: #e95009;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-17:hover {
+  background-color: #f3760f;
+}
+/* General styles for the Contact Us form */
+.contact-us {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #0a0a0a; /* Adjust the background color here */
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  color: #311919; /* Ensure text color is visible against the background */
+}
+
+.contact-us h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #f8f7f8;
+}
+
+.contact-us form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: #030303;
+}
+
+.contact-us label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #f7f5f5;
+}
+
+.contact-us input,
+.contact-us textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #fffefe;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.contact-us input:focus,
+.contact-us textarea:focus {
+  border-color: #282626;
+}
+
+.contact-us button {
+  padding: 10px 20px;
+  background-color: #e95009;
+  color: #fdfbfb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-us button:hover {
+  background-color: #f3760f;
+}
+
+/* Styles for the submission success message */
+.submission-success {
+  text-align: center;
+}
+
+.submission-success h3 {
+  margin-top: 20px;
+  color: #faf9f9;
+}
+
+.tick-mark {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #4caf50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.tick-mark svg {
+  width: 30px;
+  height: 30px;
+  stroke: #fcf9f9;
+  stroke-width: 5;
+  fill: none;
 }

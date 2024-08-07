@@ -9,19 +9,11 @@ import photo4 from './imgs/pho4.jpeg';
 import photo5 from './imgs/pho5.jpeg';
 import photo6 from './imgs/pho6.jpeg';
 
-function App() {
-  const [showBookingForm, setShowBookingForm] = useState(false);
+const Gym = () => {
+  const [showBookingPage, setShowBookingPage] = useState(false);
 
-  const handleBookNowClick = () => {
-    setShowBookingForm(true);
-  };
-
-  const handleBackToHomeClick = () => {
-    setShowBookingForm(false);
-  };
-
-  if (showBookingForm) {
-    return <BookingForm handleBackToHomeClick={handleBackToHomeClick} />;
+  if (showBookingPage) {
+    return <BookingPage handleBackToHomeClick={() => setShowBookingPage(false)} />;
   }
 
   return (
@@ -61,7 +53,7 @@ function App() {
               <Card.Text>
                 Personal training is a personalized approach to fitness that provides tailored guidance, motivation, and accountability to help individuals achieve their specific health goals.
               </Card.Text>
-              <Button variant="primary" onClick={handleBookNowClick}>Book Now</Button>
+              <Button variant="primary" onClick={() => setShowBookingPage(true)}>Book Now</Button>
             </Card.Body>
           </Card>
           <Card className="card-style">
@@ -69,9 +61,9 @@ function App() {
             <Card.Body>
               <Card.Title>Group Classes</Card.Title>
               <Card.Text>
-                Motivating group sessions led by expert instructors. Select classes that align with your fitness level, interests, and goals. The idea behind group personal training is exercise.
+                Motivating group sessions led by expert instructors. Select classes that align with your fitness level, interests, and goals and help individuals to achieve health goals.
               </Card.Text>
-              <Button variant="primary" onClick={handleBookNowClick}>Book Now</Button>
+              <Button variant="primary" onClick={() => setShowBookingPage(true)}>Book Now</Button>
             </Card.Body>
           </Card>
           <Card className="card-style">
@@ -81,124 +73,139 @@ function App() {
               <Card.Text>
                 Customized diet plans for optimal health and fitness. Encourage a balanced intake of carbohydrates, proteins, fats, vitamins, and minerals to support overall health.
               </Card.Text>
-              <Button variant="primary" onClick={handleBookNowClick}>Book Now</Button>
+              <Button variant="primary" onClick={() => setShowBookingPage(true)}>Book Now</Button>
             </Card.Body>
           </Card>
         </div>
       </Container>
-
-      {/* Footer */}
-      <footer className="footer bg-dark text-white text-center py-3 mt-5">
-        <Container>
-          <Row>
-            <Col md={4}>
-              <h5>About Us</h5>
-              <p>We are committed to providing the best fitness experience. Join us to reach your fitness goals.</p>
-            </Col>
-            <Col md={4}>
-              <h5>Contact Us</h5>
-              <p>Email: info@mygym.com</p>
-              <p>Phone: +123 456 7890</p>
-            </Col>
-            <Col md={4}>
-              <h5>Follow Us</h5>
-              <p>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white">Facebook</a><br />
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white">Instagram</a><br />
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white">Twitter</a>
-              </p>
-            </Col>
-          </Row>
-        </Container>
-      </footer>
-    </div>
-  );
-}
-
-const BookingForm = ({ handleBackToHomeClick }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    mobile: '',
-    address: '',
-    date: '',
-    time: '',
-    payment: '',
-  });
-
-  const [showConfirmation, setShowConfirmation] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-    setFormData({
-      name: '',
-      email: '',
-      mobile: '',
-      address: '',
-      date: '',
-      time: '',
-      payment: '',
-    });
-    setShowConfirmation(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowConfirmation(false);
-  };
-
-  return (
-    <div className="form-container">
-      <Button variant="secondary" onClick={handleBackToHomeClick}>Back to Home</Button>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formName">
-          <Form.Label>Name</Form.Label>
-          <Form.Control type="text" name="name" value={formData.name} onChange={handleChange} required />
-        </Form.Group>
-        <Form.Group controlId="formEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" name="email" value={formData.email} onChange={handleChange} required />
-        </Form.Group>
-        <Form.Group controlId="formMobile">
-          <Form.Label>Mobile Number</Form.Label>
-          <Form.Control type="tel" name="mobile" value={formData.mobile} onChange={handleChange} required />
-        </Form.Group>
-        <Form.Group controlId="formAddress">
-          <Form.Label>Address</Form.Label>
-          <Form.Control as="textarea" name="address" value={formData.address} onChange={handleChange} required />
-        </Form.Group>
-        <Form.Group controlId="formDate">
-          <Form.Label>Date</Form.Label>
-          <Form.Control type="date" name="date" value={formData.date} onChange={handleChange} required />
-        </Form.Group>
-        <Form.Group controlId="formTime">
-          <Form.Label>Time</Form.Label>
-          <Form.Control type="time" name="time" value={formData.time} onChange={handleChange} required />
-        </Form.Group>
-        <Form.Group controlId="formPayment">
-          <Form.Label>Payment Information</Form.Label>
-          <Form.Control type="text" name="payment" value={formData.payment} onChange={handleChange} required />
-        </Form.Group>
-        <Button variant="primary" type="submit">Book Now</Button>
-      </Form>
-
-      {/* Confirmation Modal */}
-      <Modal show={showConfirmation} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Booking Confirmation</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Your booking has been confirmed!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
-        </Modal.Footer>
-      </Modal>
     </div>
   );
 };
 
-export default App;
+const BookingPage = ({ handleBackToHomeClick }) => {
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [classType, setClassType] = useState('');
+  const [trainer, setTrainer] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Construct the confirmation message
+    const confirmationMessage = `
+      Booking Confirmation
+      Date: ${date}
+      Time: ${time}
+      Class Type: ${classType}
+      Trainer: ${trainer}
+      Name: ${name}
+      Email: ${email}
+      Phone: ${phone}
+      Thank you for booking with us!
+    `;
+
+    // Construct WhatsApp URL
+    const whatsappNumber = '9894039885'; // The recipient's number
+    const whatsappMessage = encodeURIComponent(`Booking has been confirmed. ${confirmationMessage}`);
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+    // Open WhatsApp with the message
+    window.open(whatsappURL, '_blank');
+
+    setMessage('Booking Successful! A confirmation message has been prepared for WhatsApp.');
+  };
+
+  return (
+    <div className="booking-form">
+      <h1>Gym Booking Page</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="date">Date:</label>
+          <input 
+            type="date" 
+            id="date" 
+            value={date} 
+            onChange={(e) => setDate(e.target.value)} 
+            required 
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="time">Time:</label>
+          <input 
+            type="time" 
+            id="time" 
+            value={time} 
+            onChange={(e) => setTime(e.target.value)} 
+            required 
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="classType">Class Type:</label>
+          <select 
+            id="classType" 
+            value={classType} 
+            onChange={(e) => setClassType(e.target.value)} 
+            required
+          >
+            <option value="">Select a class</option>
+            <option value="yoga">Yoga</option>
+            <option value="pilates">Pilates</option>
+            <option value="spinning">Spinning</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="trainer">Trainer:</label>
+          <select 
+            id="trainer" 
+            value={trainer} 
+            onChange={(e) => setTrainer(e.target.value)} 
+            required
+          >
+            <option value="">Select a trainer</option>
+            <option value="john">John Doe</option>
+            <option value="jane">Jane Smith</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
+          <input 
+            type="text" 
+            id="name" 
+            value={name} 
+            onChange={(e) => setName(e.target.value)} 
+            required 
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input 
+            type="email" 
+            id="email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            required 
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="phone">Phone:</label>
+          <input 
+            type="tel" 
+            id="phone" 
+            value={phone} 
+            onChange={(e) => setPhone(e.target.value)} 
+            required 
+          />
+        </div>
+        <button type="submit">Book Now</button>
+      </form>
+      {message && <p className="message">{message}</p>}
+      <Button variant="secondary" onClick={handleBackToHomeClick} className="back-button">Back to Home</Button>
+    </div>
+  );
+};
+
+export default Gym;

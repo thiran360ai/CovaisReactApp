@@ -1,99 +1,131 @@
+/* src/styles.css */
+
 /* General Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4; /* Light background color for the entire page */
+  background-color: #f0f2f5; /* Light gray background for the whole page */
+  color: #333; /* Dark text color for readability */
   margin: 0;
   padding: 0;
 }
 
-/* Navbar Styles */
-.navbar {
-  margin-bottom: 20px;
-}
-
-.navbar-brand {
-  font-size: 1.5rem;
-}
-
 /* Carousel Styles */
 .carousel-img {
-  height: 500px; /* Fixed height for carousel images */
-  object-fit: cover; /* Ensures images cover the area without distortion */
+  object-fit: cover; /* Ensure images cover the container */
+  height: 500px; /* Adjust to fit your design */
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-item {
+  transition: transform 0.5s ease;
+}
+
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+  transition: transform 0.5s ease;
 }
 
 /* Card Styles */
 .card-style {
-  width: 18rem;
-  margin: 10px;
-  transition: transform 0.3s ease; /* Smooth zoom effect */
+  width: 18rem; /* Fixed card width */
+  margin-bottom: 1.5rem; /* Space between cards */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card-style:hover {
-  transform: scale(1.05); /* Zoom in effect on hover */
+  transform: scale(1.05); /* Slightly enlarge card on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
 }
 
 .card-img {
-  height: 200px; /* Fixed height for card images */
-  object-fit: cover; /* Ensures images cover the area without distortion */
+  height: 200px; /* Adjust to fit your design */
+  object-fit: cover; /* Ensure images cover the container */
+  transition: opacity 0.5s ease;
+}
+
+.card-img:hover {
+  opacity: 0.9; /* Slightly fade image on hover */
 }
 
 /* Footer Styles */
 .footer {
-  background-color: #343a40;
-  color: #ffffff;
-  padding: 20px;
-  text-align: center;
+  background-color: #343a40; /* Dark background for footer */
+  padding: 1rem 0;
+  border-top: 1px solid #e9ecef;
+  color: #fff; /* White text color for footer */
 }
 
-.footer a {
-  color: #ffffff;
-  text-decoration: none;
+.footer h5 {
+  margin-bottom: 1rem;
 }
 
-.footer a:hover {
-  text-decoration: underline;
-}
-
-/* Booking Form Styles */
-.form-container {
-  padding: 20px;
-  background-color: #000000; /* Black background for the form */
-  color: #ffffff; /* White text color for the form */
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Booking Page Styles */
+.booking-form {
   max-width: 600px;
-  margin: auto;
-  margin-top: 20px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #000; /* Black background for booking page */
+  color: #fff; /* White text color for booking page */
 }
 
-.form-container button {
-  margin-top: 10px;
+.booking-form h1 {
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-.form-container .form-group {
+.booking-form .form-group {
   margin-bottom: 15px;
 }
 
-.form-container .form-control {
-  border-radius: 5px;
-  border: 1px solid #ced4da;
+.booking-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
-.form-container .form-control:focus {
-  border-color: #80bdff;
-  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+.booking-form input,
+.booking-form select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #666; /* Darker border color */
+  border-radius: 4px;
+  background: #333; /* Dark background for inputs */
+  color: #fff; /* White text color for inputs */
 }
 
-/* Modal Styles */
-.modal-content {
-  border-radius: 5px;
+.booking-form button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background: #007bff; /* Primary button color */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease;
 }
 
-.modal-header {
-  border-bottom: none;
+.booking-form button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }
 
-.modal-footer {
-  border-top: none;
+.booking-form .message {
+  color: #28a745; /* Green color for success message */
+  font-weight: bold;
+  text-align: center;
+}
+
+.booking-form .back-button {
+  margin-top: 20px;
+  background-color: #6c757d; /* Secondary button color */
+  border-color: #6c757d;
+}
+
+.booking-form .back-button:hover {
+  background-color: #5a6268; /* Darker gray on hover */
 }
 
