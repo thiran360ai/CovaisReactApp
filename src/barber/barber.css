@@ -147,7 +147,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #3e3b3b;
 }
 
 .container {
@@ -202,7 +202,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: #fff;
+  color: #aaa6a6;
   text-align: center;
   animation: fadeIn 1s ease-out;
 }
@@ -294,7 +294,7 @@ body {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: #2c2b2b;
   border: none;
   cursor: pointer;
   opacity: 0.5;
@@ -302,10 +302,11 @@ body {
 
 .nav-button.active {
   opacity: 1;
-  background-color: #fdfafa;
+  background-color: #2c2b2b;
 }
 
 
+/* Booking Slot Popup */
 /* Booking Slot Popup */
 .booking-slot-popup {
   position: fixed;
@@ -313,7 +314,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.1); /* Match box-shadow effect */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -321,9 +322,10 @@ body {
 }
 
 .booking-slot-popup-content {
-  background: #020202;
+  background: #fff; /* Match background color */
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 10px; /* Match border radius */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Match box-shadow */
   position: relative;
   width: 90%;
   max-width: 500px;
@@ -331,50 +333,69 @@ body {
 
 .booking-slot-popup-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #ff0000;
-  color: #fdfafa;
+  top: -15px; /* Adjusted position to ensure it's not too close to the content */
+  right: -15px; /* Adjusted position to ensure it's not too close to the content */
+  background: #f0932b; /* Match button color */
+  color: #fff;
   border: none;
   border-radius: 50%;
   width: 30px;
   height: 30px;
   font-size: 20px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.booking-slot-popup-close:hover {
+  background-color: #d9801f; /* Match hover color */
 }
 
 .booking-slot-popup h2 {
   margin: 0;
   font-size: 1.5em;
-  color: #fdfafa;
+  color: #333; /* Dark color for the title */
 }
 
 .booking-slot-popup form {
   display: flex;
   flex-direction: column;
-  color: #fdfafa;
+  color: #333;
 }
 
 .booking-slot-popup form label {
   margin: 10px 0 5px;
+  color: #888; /* Match label color */
+  font-size: 14px; /* Match font size */
 }
 
 .booking-slot-popup form input {
-  padding: 8px;
+  padding: 10px;
   margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5; /* Match input background */
+  font-size: 16px; /* Match font size */
+  color: #333;
 }
 
 .booking-slot-popup form button {
-  padding: 10px;
-  background-color: hsl(32, 100%, 50%);
-  color: #fff;
+  padding: 10px 20px;
+  background-color: #f0932b; /* Match button color */
   border: none;
-  border-radius: 5px;
+  border-radius: 5px; /* Match border radius */
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .booking-slot-popup form button:hover {
-  background-color: hsl(29, 98%, 51%);
+  background-color: #ed8e27; /* Match hover color */
 }
 
 /* Booking Form */
@@ -517,7 +538,7 @@ body {
 .card-description {
   font-size: 1.5em;
   margin-bottom: 15px;
-  color: #080707;
+  color: #c9c8c8;
 }
 
 .btn-17 {
@@ -623,7 +644,7 @@ body {
   fill: none;
 }
 .testimonials {
-  background-color: #f8f9fa; /* Optional: add a background color */
+  background-color: #3f5368; /* Optional: add a background color */
   padding: 60px 0;
 }
 
@@ -774,7 +795,7 @@ body {
 /* Location Section */
 .location {
   background-color: #070404;
-  color: white;
+  color: rgb(11, 11, 11);
 }
 
 .location h2 {
@@ -798,7 +819,7 @@ body {
 
 .location .btn {
   background-color: #fa5f05;
-  color: white;
+  color: rgb(27, 26, 26);
   border: none;
   padding: 10px 20px;
   font-size: 1rem;
@@ -844,7 +865,7 @@ body {
 
 .testimonial-feedback {
   font-size: 1.1em;
-  color: #d1d1d1;
+  color: #512828;
   margin: 15px 0;
 }
 
@@ -907,5 +928,5 @@ body {
 
 .pricing-description {
   font-size: 1.5rem;
-  color: #faf5f5;
+  color: #0d0d0d;
 }

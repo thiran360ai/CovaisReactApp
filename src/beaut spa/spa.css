@@ -160,24 +160,6 @@ h1, h2, h3 {
   margin-top: 15px;
 }
 
-.booking-form .close-button {
-  background-color: #f94144;
-  border: none;
-  border-radius: 6px;
-  color: #fff;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 1rem;
-  width: 100%;
-  margin-top: 15px;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.booking-form .close-button:hover {
-  background-color: #f3722c;
-  transform: scale(1.05);
-}
-
 /* Overlay */
 .overlay {
   position: fixed;
@@ -201,17 +183,17 @@ h1, h2, h3 {
   position: relative;
 }
 
-.booking-form-container .close-button {
+.booking-form .close-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #fff; /* Background color for visibility */
-  border: 2px solid #f94144; /* Border color */
+  top: 5px; /* Adjusted position */
+  right: 5px; /* Adjusted position */
+  background: #f0932b; /* Orange background color to match the button */
+  border: none; /* No border */
   border-radius: 50%; /* Circular shape */
-  width: 30px; /* Width of the button */
-  height: 30px; /* Height of the button */
-  font-size: 1.2em; /* Font size for the close icon */
-  color: #f94144;
+  width: 25px; /* Slightly smaller width */
+  height: 25px; /* Slightly smaller height */
+  font-size: 1rem; /* Slightly smaller font size for the close icon */
+  color: #fff; /* White color for the close icon */
   display: flex; /* Center icon */
   justify-content: center; /* Center icon horizontally */
   align-items: center; /* Center icon vertically */
@@ -220,9 +202,7 @@ h1, h2, h3 {
   text-align: center;
 }
 
-.booking-form-container .close-button:hover {
-  background: #f94144; /* Background color on hover */
-  color: #fff; /* Text color on hover */
-  border-color: #f3722c; /* Border color on hover */
+.booking-form .close-button:hover {
+  background: #d9801f; /* Darker orange on hover */
+  color: #fff; /* Text color remains white on hover */
 }
-

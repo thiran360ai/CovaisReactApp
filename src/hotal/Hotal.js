@@ -1,26 +1,42 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './hotal.css'; 
+import './hotel.css'; 
 import image1 from './image/nk.jpg';
 import image2 from './image/image 1.jpg';
-import image3 from './image/image 3.jpg'; // New image
+import image3 from './image/image 3.jpg'; 
 import image4 from './image/nkm.jpg';
-import image5 from './image/pic.jpg';
-import image6 from './image/background.jpg';
-import image7 from './image/pic4.jpg'; // New image
+import image5 from './image/image 2.webp';
+import image6 from './image/navin.jpg';
 
-// Sample data for hotels with images
+// Carousel images
+import carouselImg1 from './image/background.jpg';
+import carouselImg2 from './image/navin (2).jpg';
+import carouselImg3 from './image/bg1.jpg';
+import carouselImg4 from './image/navin.jpg'; // Placeholder for an additional carousel image
+
 const hotelsData = [
-  { id: 1, name: 'Hotel A', location: 'City A', price: 50, rating: 2.5, image: image1, latitude: 51.505, longitude: -0.09 },
-  { id: 2, name: 'Hotel B', location: 'City B', price: 150, rating: 3.0, image: image2, latitude: 51.515, longitude: -0.1 },
-  { id: 3, name: 'Hotel C', location: 'City C', price: 300, rating: 3.8, image: image3, latitude: 51.525, longitude: -0.11 }, // New hotel
-  { id: 4, name: 'Hotel D', location: 'City D', price: 450, rating: 3.2, image: image4, latitude: 51.535, longitude: -0.12 },
-  { id: 5, name: 'Hotel E', location: 'City E', price: 550, rating: 4.0, image: image5, latitude: 51.565, longitude: -0.12 },
-  { id: 4, name: 'Hotel A', location: 'City A', price: 650, rating: 4.3, image: image6, latitude: 51.535, longitude: -0.12 },
-  { id: 5, name: 'Hotel E', location: 'City E', price: 700, rating: 4.5, image: image7, latitude: 51.565, longitude: -0.12 }, // New hotel
+  { id: 1, name: 'Hotel A', location: 'City A', price: 50, rating: 4.5, image: image1, latitude: 51.505, longitude: -0.09 },
+  { id: 2, name: 'Hotel B', location: 'City B', price: 150, rating: 4.0, image: image2, latitude: 51.515, longitude: -0.1 },
+  { id: 3, name: 'Hotel C', location: 'City C', price: 300, rating: 4.8, image: image3, latitude: 51.525, longitude: -0.11 },
+  { id: 4, name: 'Hotel D', location: 'City D', price: 450, rating: 4.2, image: image4, latitude: 51.535, longitude: -0.12 },
+  { id: 5, name: 'Hotel E', location: 'City E', price: 550, rating: 4.4, image: image5, latitude: 51.565, longitude: -0.12 },
+  { id: 6, name: 'Hotel F', location: 'City F', price: 700, rating: 4.5, image: image6, latitude: 51.565, longitude: -0.12 },
 ];
 
 function HotelWebsite() {
+
+  const [showBookingPage, setShowBookingPage] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const photos = [carouselImg4,carouselImg3,carouselImg2,carouselImg1];
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % photos.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + photos.length) % photos.length);
+  }
   const [searchCriteria, setSearchCriteria] = useState({
     location: '',
   });
@@ -40,7 +56,7 @@ function HotelWebsite() {
   const handleSearch = (e) => {
     e.preventDefault();
     setSearchCriteria({
-      location: e.target.location.value.toLowerCase(), // Convert to lower case for case-insensitive search
+      location: e.target.location.value.toLowerCase(),
     });
   };
 
@@ -54,7 +70,10 @@ function HotelWebsite() {
       ...bookingDetails,
       location: hotel.location,
     });
-    window.$('#hotelDetailsModal').modal('show');
+  };
+
+  const handleCloseModal = () => {
+    setSelectedHotel(null);
   };
 
   const handleBookingChange = (e) => {
@@ -67,25 +86,28 @@ function HotelWebsite() {
   const handleBookingSubmit = (e) => {
     e.preventDefault();
     alert('Booking confirmed!');
-    // You can add more logic here to handle the booking submission
     setSelectedHotel(null);
   };
 
   const filteredAndSearchedHotels = hotelsData
     .filter(hotel =>
-      // Filter by price range
       hotel.price >= filterCriteria.priceRange[0] &&
       hotel.price <= filterCriteria.priceRange[1] &&
-      // Filter by rating
       hotel.rating >= filterCriteria.rating &&
-      // Filter by search criteria
       (hotel.location.toLowerCase().includes(searchCriteria.location) || hotel.name.toLowerCase().includes(searchCriteria.location))
     );
 
   return (
     <div className="hotel-website-container">
+      <h1 className="text-center title">Hotel</h1>
+      {/* Image Slider Component */}
+      <div className="slider-container">
+            <button className="slider-button prev" onClick={prevSlide}>❮</button>
+            <img className="slider-img" src={photos[currentIndex]} alt={`Slide ${currentIndex + 1}`} />
+            <button className="slider-button next" onClick={nextSlide}>❯</button>
+          </div>
+
       <section className="search-section">
-        <h1 className="text-center title">Hotel</h1>
         <div className="form-and-filter-container">
           <form className='hotel-form' onSubmit={handleSearch}>
             <div className="form-row search-form">
@@ -195,15 +217,15 @@ function HotelWebsite() {
         <div className="row hotel-boxes">
           {filteredAndSearchedHotels.map(hotel => (
             <div className="col-md-4 hotel-box" key={hotel.id}>
-              <div className="box hotel-box-body">
-                <img src={hotel.image} className="box-img-top hotel-image" alt={hotel.name} />
-                <div className="box-body">
-                  <h5 className="box-title hotel-name">{hotel.name}</h5>
-                  <p className="box-text"><strong>Location:</strong> {hotel.location}</p>
-                  <p className="box-text"><strong>Price:</strong> ${hotel.price}</p>
-                  <p className="box-text"><strong>Rating:</strong> {hotel.rating}</p>
-                  <button className="btn btn-primary view-details-button" onClick={() => handleShowModal(hotel)}>View Details</button>
-                </div>
+              <div className="hotel-image-container">
+                <img src={hotel.image} alt={hotel.name} className="hotel-image" />
+              </div>
+              <div className="hotel-info">
+                <h3 className="hotel-name">{hotel.name}</h3>
+                <p className="hotel-location">{hotel.location}</p>
+                <p className="hotel-price">Price: ${hotel.price}</p>
+                <p className="hotel-rating">Rating: {hotel.rating} Stars</p>
+                <button className="btn btn-primary book-now-button" onClick={() => handleShowModal(hotel)}>Book Now</button>
               </div>
             </div>
           ))}
@@ -211,76 +233,82 @@ function HotelWebsite() {
       </section>
 
       {selectedHotel && (
-        <div className="modal fade" id="hotelDetailsModal" tabIndex="-1" role="dialog" aria-labelledby="hotelDetailsModalLabel" aria-hidden="true">
+        <div className="modal fade show" style={{ display: 'block' }} tabIndex="-1" role="dialog">
           <div className="modal-dialog modal-lg" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="hotelDetailsModalLabel">{selectedHotel.name}</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <h5 className="modal-title">{selectedHotel.name}</h5>
+                <button type="button" className="close" aria-label="Close" onClick={handleCloseModal}>
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div className="modal-body">
-                <img src={selectedHotel.image} className="img-fluid mb-3" alt={selectedHotel.name} />
-                <p><strong>Location:</strong> {selectedHotel.location}</p>
-                <p><strong>Price:</strong> ${selectedHotel.price}</p>
-                <p><strong>Rating:</strong> {selectedHotel.rating}</p>
                 <form onSubmit={handleBookingSubmit}>
-                  <div className="form-group">
-                    <label htmlFor="checkInDate">Check-in Date</label>
-                    <input
-                      type="date"
-                      id="checkInDate"
-                      name="checkInDate"
-                      className="form-control"
-                      value={bookingDetails.checkInDate}
-                      onChange={handleBookingChange}
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="checkOutDate">Check-out Date</label>
-                    <input
-                      type="date"
-                      id="checkOutDate"
-                      name="checkOutDate"
-                      className="form-control"
-                      value={bookingDetails.checkOutDate}
-                      onChange={handleBookingChange}
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="numberOfGuests">Number of Guests</label>
-                    <input
-                      type="number"
-                      id="numberOfGuests"
-                      name="numberOfGuests"
-                      className="form-control"
-                      value={bookingDetails.numberOfGuests}
-                      onChange={handleBookingChange}
-                      min="1"
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="numberOfRooms">Number of Rooms</label>
-                    <input
-                      type="number"
-                      id="numberOfRooms"
-                      name="numberOfRooms"
-                      className="form-control"
-                      value={bookingDetails.numberOfRooms}
-                      onChange={handleBookingChange}
-                      min="1"
-                      required
-                    />
+                  <div className="form-row">
+                    <div className="col-md-6 form-group">
+                      <label htmlFor="location">Location</label>
+                      <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        className="form-control"
+                        value={bookingDetails.location}
+                        readOnly
+                      />
+                    </div>
+                    <div className="col-md-6 form-group">
+                      <label htmlFor="checkInDate">Check-in Date</label>
+                      <input
+                        type="date"
+                        id="checkInDate"
+                        name="checkInDate"
+                        className="form-control"
+                        value={bookingDetails.checkInDate}
+                        onChange={handleBookingChange}
+                        required
+                      />
+                    </div>
+                    <div className="col-md-6 form-group">
+                      <label htmlFor="checkOutDate">Check-out Date</label>
+                      <input
+                        type="date"
+                        id="checkOutDate"
+                        name="checkOutDate"
+                        className="form-control"
+                        value={bookingDetails.checkOutDate}
+                        onChange={handleBookingChange}
+                        required
+                      />
+                    </div>
+                    <div className="col-md-6 form-group">
+                      <label htmlFor="numberOfGuests">Number of Guests</label>
+                      <input
+                        type="number"
+                        id="numberOfGuests"
+                        name="numberOfGuests"
+                        className="form-control"
+                        value={bookingDetails.numberOfGuests}
+                        onChange={handleBookingChange}
+                        min="1"
+                        required
+                      />
+                    </div>
+                    <div className="col-md-6 form-group">
+                      <label htmlFor="numberOfRooms">Number of Rooms</label>
+                      <input
+                        type="number"
+                        id="numberOfRooms"
+                        name="numberOfRooms"
+                        className="form-control"
+                        value={bookingDetails.numberOfRooms}
+                        onChange={handleBookingChange}
+                        min="1"
+                        required
+                      />
+                    </div>
                   </div>
                   <button type="submit" className="btn btn-primary">Confirm Booking</button>
                 </form>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>

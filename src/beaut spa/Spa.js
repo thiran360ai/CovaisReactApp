@@ -311,7 +311,7 @@ const BookingForm = ({ onClose }) => {
         <button type="submit">Confirm Booking</button>
       </form>
       {message && <p className="success-message">{message}</p>}
-      <button onClick={onClose} className="close-button">Close</button>
+      <button onClick={onClose} className="close-button">X</button>
     </div>
   );
 };
