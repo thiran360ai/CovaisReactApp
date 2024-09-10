@@ -1,5 +1,5 @@
 // src/App.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
 import img1 from './img/img (1).jpeg';
@@ -14,6 +14,14 @@ import Hotel from './hotal/Hotal'; // Ensure the file name matches
 import Gym from './gym/Gym'; // Ensure the file name matches
 import Spa from './beaut spa/Spa';
 import Subscr from './comp/subscr'; // Ensure the component name starts with uppercase
+
+// Loading Component
+const Loading = () => (
+  <div className="loading">
+    <div className="loader"></div>
+    <h2>Loading...</h2>
+  </div>
+);
 
 // Header Component
 const Header = ({ onLoginClick }) => (
@@ -124,25 +132,39 @@ const Footer = () => (
 
 const App = () => {
   const [isLoginPopupOpen, setLoginPopupOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleLoginClick = () => setLoginPopupOpen(true);
   const handleClosePopup = () => setLoginPopupOpen(false);
 
+  useEffect(() => {
+    // Simulate a loading delay
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // Adjust the delay as needed
+  }, []);
+
   return (
     <Router>
       <div className="app">
-        <Header onLoginClick={handleLoginClick} />
-        <LoginPopup isOpen={isLoginPopupOpen} onClose={handleClosePopup} />
-        <Routes>
-          <Route path="/" element={<MainContent />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/barber" element={<Barber />} />
-          <Route path="/hotel" element={<Hotel />} />
-          <Route path="/gym" element={<Gym />} />
-          <Route path="/spa" element={<Spa />} />
-          <Route path="/subscr" element={<Subscr />} /> {/* Route for Subscr component */}
-        </Routes>
-        <Footer />
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <Header onLoginClick={handleLoginClick} />
+            <LoginPopup isOpen={isLoginPopupOpen} onClose={handleClosePopup} />
+            <Routes>
+              <Route path="/" element={<MainContent />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/barber" element={<Barber />} />
+              <Route path="/hotel" element={<Hotel />} />
+              <Route path="/gym" element={<Gym />} />
+              <Route path="/spa" element={<Spa />} />
+              <Route path="/subscr" element={<Subscr />} /> {/* Route for Subscr component */}
+            </Routes>
+            <Footer />
+          </>
+        )}
       </div>
     </Router>
   );

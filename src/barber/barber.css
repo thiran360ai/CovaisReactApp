@@ -65,7 +65,6 @@
 .services .fade-in {
   animation: fadeIn 1s ease-out;
 }
-
 /* Add to existing fadeIn keyframe animation */
 @keyframes fadeIn {
   from {
@@ -306,6 +305,7 @@ body {
   background-color: #fdfafa;
 }
 
+
 /* Booking Slot Popup */
 .booking-slot-popup {
   position: fixed;
@@ -402,7 +402,6 @@ body {
 .move-up {
   animation: move-up-alternate 2s ease-in-out infinite;
 }
-
 /* Responsive Styles */
 @media (max-width: 768px) {
   .navbar {
@@ -512,13 +511,13 @@ body {
 .card-title {
   font-size: 1.5em;
   margin-bottom: 10px;
-  color: #333;
+  color: hwb(24 0% 2%);
 }
 
 .card-description {
-  font-size: 1.1em;
+  font-size: 1.5em;
   margin-bottom: 15px;
-  color: #faf6f6;
+  color: #080707;
 }
 
 .btn-17 {
@@ -622,4 +621,291 @@ body {
   stroke: #fcf9f9;
   stroke-width: 5;
   fill: none;
+}
+.testimonials {
+  background-color: #f8f9fa; /* Optional: add a background color */
+  padding: 60px 0;
+}
+
+.testimonial-card {
+  background: #fff; /* Optional: card background color */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.testimonial-image {
+  width: 100px; /* Adjust size as needed */
+  height: 100px; /* Adjust size as needed */
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-feedback {
+  font-size: 16px;
+  color: #333;
+}
+
+.testimonial-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fa5f05; /* Accent color */
+}
+/* Container and Layout */
+.team {
+  background-color: #070404; /* Dark background */
+  color: #ffffff; /* White text */
+}
+
+.team h2 {
+  color: #fa5f05; /* Orange accent for the heading */
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+/* Team Member Card */
+.team-member {
+  background-color: #1c1c1c; /* Slightly lighter dark background for cards */
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Team Member Image */
+.team-image {
+  width: 100%;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.team-member:hover .team-image {
+  transform: scale(1.1);
+}
+
+/* Team Member Details */
+.team-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.team-role {
+  font-size: 1.2rem;
+  color: #fa5f05; /* Orange accent for the role */
+  margin-bottom: 10px;
+}
+
+.team-bio {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #d1d1d1; /* Lighter text for the bio */
+}
+
+.team-specialty {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fa5f05; /* Orange accent for the specialty */
+  margin-bottom: 15px;
+}
+
+/* Social Media Links */
+.team-social a {
+  color: #ffffff; /* White text */
+  margin-right: 10px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.team-social a:hover {
+  color: #fa058c; /* Orange accent on hover */
+}
+/* Team Member Image */
+.team-image {
+  width: 150px; /* Set a fixed width for the images */
+  height: 150px; /* Set a fixed height for the images */
+  border-radius: 50%; /* Make the images circular */
+  margin-bottom: 20px;
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+  transition: transform 0.3s ease-in-out;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Animation for the Section */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.team-member {
+  animation: fadeInUp 0.5s ease-in-out both;
+}
+/* Gallery Section */
+.gallery {
+  background-color: #1c1c1c;
+  padding: 60px 0;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+  transform: scale(1.1);
+}
+/* Location Section */
+.location {
+  background-color: #070404;
+  color: white;
+}
+
+.location h2 {
+  color: #fa5f05;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.location h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #fa5f05;
+}
+
+.location address {
+  font-style: normal;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.location .btn {
+  background-color: #fa5f05;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.location .btn:hover {
+  background-color: #e65505;
+}
+
+.location iframe {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.testimonials {
+  background-color: #070404;
+  color: #ffffff;
+}
+
+.testimonial-card {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+}
+
+.testimonial-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.testimonial-feedback {
+  font-size: 1.1em;
+  color: #d1d1d1;
+  margin: 15px 0;
+}
+
+.testimonial-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.testimonial-rating {
+  margin-top: 10px;
+}
+
+.star {
+  color: #fae105;
+  margin-right: 5px;
+  font-size: 1.2em;
+}
+/* barber.css */
+
+/* Pricing.css */
+
+.pricing {
+  background-color: #0d0d0e; /* Light background color */
+}
+
+.pricing-card {
+  background: rgb(8, 8, 8);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-header {
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.pricing-service {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #fcf5f5;
+}
+
+.pricing-price {
+  font-size: 2rem;
+  margin: 0;
+  color: #fa5f05; /* Orange color */
+}
+
+.pricing-body {
+  padding: 20px;
+}
+
+.pricing-description {
+  font-size: 1.5rem;
+  color: #faf5f5;
 }
