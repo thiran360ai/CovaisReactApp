@@ -368,6 +368,7 @@ body {
   justify-content: space-between;
   padding: 10px 20px;
   background-color: #f4f4f4;
+  border-radius: 50px;
   border-bottom: 1px solid #ddd;
 }
 

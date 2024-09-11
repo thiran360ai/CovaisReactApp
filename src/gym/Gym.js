@@ -39,7 +39,7 @@ const Gym = () => {
           </div>
 
           {/* Card Component */}
-          <Container className="mt-4">
+          <Container className="mt-4-4">
             <div className="d-flex justify-content-around flex-wrap">
               <Card className="card-style-1">
                 <Card.Img variant="top" src={photo5} className="card-img-1" />

@@ -12,7 +12,7 @@ import image6 from './image/navin.jpg';
 import carouselImg1 from './image/background.jpg';
 import carouselImg2 from './image/navin (2).jpg';
 import carouselImg3 from './image/bg1.jpg';
-import carouselImg4 from './image/navin.jpg'; // Placeholder for an additional carousel image
+import carouselImg4 from './image/pic1.jpg'; // Placeholder for an additional carousel image
 
 const hotelsData = [
   { id: 1, name: 'Hotel A', location: 'City A', price: 50, rating: 2.5, image: image1, latitude: 51.505, longitude: -0.09 },
