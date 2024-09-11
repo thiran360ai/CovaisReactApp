@@ -133,7 +133,7 @@ const BookingSlotPopup = ({ onClose }) => {
       Thank you for booking with us!
     `;
 
-    const whatsappNumber = '918838043691';
+    const whatsappNumber = '9894039885';
     const whatsappMessage = encodeURIComponent(`Booking has been confirmed. ${confirmationMessage}`);
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 

@@ -15,12 +15,12 @@ import carouselImg3 from './image/bg1.jpg';
 import carouselImg4 from './image/navin.jpg'; // Placeholder for an additional carousel image
 
 const hotelsData = [
-  { id: 1, name: 'Hotel A', location: 'City A', price: 50, rating: 4.5, image: image1, latitude: 51.505, longitude: -0.09 },
-  { id: 2, name: 'Hotel B', location: 'City B', price: 150, rating: 4.0, image: image2, latitude: 51.515, longitude: -0.1 },
-  { id: 3, name: 'Hotel C', location: 'City C', price: 300, rating: 4.8, image: image3, latitude: 51.525, longitude: -0.11 },
+  { id: 1, name: 'Hotel A', location: 'City A', price: 50, rating: 2.5, image: image1, latitude: 51.505, longitude: -0.09 },
+  { id: 2, name: 'Hotel B', location: 'City B', price: 150, rating: 3.0, image: image2, latitude: 51.515, longitude: -0.1 },
+  { id: 3, name: 'Hotel C', location: 'City C', price: 300, rating: 3.8, image: image3, latitude: 51.525, longitude: -0.11 },
   { id: 4, name: 'Hotel D', location: 'City D', price: 450, rating: 4.2, image: image4, latitude: 51.535, longitude: -0.12 },
   { id: 5, name: 'Hotel E', location: 'City E', price: 550, rating: 4.4, image: image5, latitude: 51.565, longitude: -0.12 },
-  { id: 6, name: 'Hotel F', location: 'City F', price: 700, rating: 4.5, image: image6, latitude: 51.565, longitude: -0.12 },
+  { id: 6, name: 'Hotel F', location: 'City F', price: 700, rating: 5.0, image: image6, latitude: 51.565, longitude: -0.12 },
 ];
 
 function HotelWebsite() {

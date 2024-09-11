@@ -181,9 +181,9 @@ function ContactForm() {
       <h2 className="contact-title">Contact Us</h2>
       <p className="contact-description">Get in touch with us to book your spa session.</p>
       <div className="contact-info">
-        <p>Phone: [6381343407]</p>
-        <p>Email: [gowthamkowsalya20@gmail.com]</p>
-        <p>Address: [gobichettipalayam,athani]</p>
+        <p>Company : THE BOYZ</p>
+        <p>Email: theboyz@gmail.com</p>
+        <p>Address: Gobichettipalayam,Tamilnadu</p>
       </div>
     </section>
   );
@@ -217,7 +217,7 @@ const BookingForm = ({ onClose }) => {
     `;
 
     // Construct WhatsApp URL
-    const whatsappNumber = '6381343407'; // The recipient's number
+    const whatsappNumber = '9894039885'; // The recipient's number
     const whatsappMessage = encodeURIComponent(`Booking has been confirmed. ${confirmationMessage}`);
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 

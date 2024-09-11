@@ -206,3 +206,11 @@ h1, h2, h3 {
   background: #d9801f; /* Darker orange on hover */
   color: #fff; /* Text color remains white on hover */
 }
+#contact {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #4a4a49;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff;
+}

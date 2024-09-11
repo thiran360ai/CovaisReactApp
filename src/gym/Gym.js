@@ -106,7 +106,7 @@ const BookingPage = ({ handleBackToHomeClick }) => {
     `;
 
     // Construct WhatsApp URL
-    const whatsappNumber = '6383237174'; // The recipient's number
+    const whatsappNumber = '9894039885'; // The recipient's number
     const whatsappMessage = encodeURIComponent(`Booking has been confirmed. ${confirmationMessage}`);
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
