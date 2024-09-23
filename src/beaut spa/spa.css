@@ -1,41 +1,37 @@
+/* Basic Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+}
 
 /* Hero Section */
 .hero {
   background-size: cover;
   background-position: center;
-  color: #fff;
   padding: 100px 20px;
   text-align: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./image/background.jpg');
+  color: #fff;
 }
 
 .hero-title {
-  margin: 0;
   font-size: 3em;
-  font-weight: bold;
+  margin-bottom: 0.5em;
 }
 
 .hero-subtitle {
   font-size: 1.5em;
-  margin-top: 10px;
 }
 
-/* Section Styles */
+/* Section Styling */
 .section {
   padding: 60px 20px;
-  text-align: center;
-}
-
-.section-title {
-  font-size: 2.5em;
-  margin-bottom: 30px;
-  font-weight: bold;
-}
-
-/* Services Styles */
-/* Services Section */
-.section {
-  padding: 50px 20px;
   background-color: #f4f4f4;
 }
 
@@ -43,232 +39,129 @@
   font-size: 2em;
   margin-bottom: 20px;
   text-align: center;
-  color: #333;
 }
 
+/* Services Section */
 .services-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
 }
 
-/* Service Item */
 .service {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 20px;
   text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.service:hover {
-  transform: scale(1.05);
+  width: 250px;
 }
 
 .service-image {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  height: auto;
+  border-radius: 8px;
 }
 
 .service-name {
   font-size: 1.5em;
-  margin: 15px 0 10px;
-  color: #333;
+  margin: 10px 0;
 }
 
 .service-description {
   font-size: 1em;
-  margin: 0 0 20px;
-  color: #666;
+  color: #555;
 }
 
 .service-button {
-  background-color: #007bff;
+  background-color: #f9c74f;
   border: none;
+  border-radius: 5px;
   color: #fff;
   padding: 10px 20px;
-  font-size: 1em;
   cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  font-size: 1em;
 }
 
 .service-button:hover {
-  background-color: #0056b3;
+  background-color: #f9844a;
 }
 
-/* Testimonials Styles */
-.testimonial-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.testimonial {
-  max-width: 600px;
-  text-align: center;
-  background-color: #fff;
-  border: 1px solid #ddd;
+/* Booking Form Styling */
+.booking-form {
+  background: #fff;
   border-radius: 8px;
-  padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px; /* Adjusted for a more compact form */
+  margin: 20px auto;
+  padding: 20px; /* Reduced padding */
+  position: relative;
 }
 
-.testimonial-text {
-  font-size: 1.3em;
+.booking-form h1 {
+  font-size: 1.8rem; /* Slightly smaller title font size */
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.booking-form .form-group {
   margin-bottom: 15px;
 }
 
-.testimonial-name {
-  font-size: 1.1em;
-  font-style: italic;
+.booking-form .form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
 }
 
-/* Feedback Form Styles */
-.form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.label {
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.input, .textarea {
+.booking-form .form-group input,
+.booking-form .form-group select {
   width: 100%;
-  padding: 12px;
-  margin-top: 5px;
-  border-radius: 5px;
+  padding: 8px; /* Reduced padding */
   border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
 }
 
-.textarea {
-  height: 120px;
-  resize: vertical;
+.booking-form .form-group textarea {
+  width: 100%;
+  padding: 8px; /* Reduced padding */
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  height: 80px;
+  font-size: 0.9rem;
 }
 
-.button {
-  padding: 12px 20px;
-  background-color: #007bff;
-  color: #fff;
+.booking-form .button {
+  background-color: #f9c74f;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
+  color: #fff;
+  padding: 10px;
   cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  width: 100%;
+  margin-top: 15px;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-.button:hover {
-  background-color: #0056b3;
+.booking-form .button:hover {
+  background-color: #f9844a;
+  transform: scale(1.05);
 }
 
-/* Contact Section Styles */
-.contact-section {
-  padding: 60px 20px;
-  background-color: #fff;
+.booking-form .success-message {
+  color: #28a745;
+  font-weight: 600;
   text-align: center;
+  margin-top: 15px;
 }
 
-.contact-title {
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.contact-description {
-  font-size: 1.3em;
-  color: #555;
-  margin-bottom: 30px;
-}
-
-.contact-info {
-  font-size: 1.1em;
-  color: #333;
-}
-/* Booking Page Styles */
-  .booking-form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: #000; /* Black background for booking page */
-    color: #fff; /* White text color for booking page */
-  }
-  
-  .booking-form h1 {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-  
-  .booking-form .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .booking-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .booking-form input,
-  .booking-form select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #666; /* Darker border color */
-    border-radius: 4px;
-    background: #333; /* Dark background for inputs */
-    color: #fff; /* White text color for inputs */
-  }
-  
-  .booking-form button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    background: #007bff; /* Primary button color */
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.3s ease;
-  }
-  
-  .booking-form button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-  
-  .booking-form .message {
-    color: #28a745; /* Green color for success message */
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  .booking-form .back-button {
-    margin-top: 20px;
-    background-color: #6c757d; /* Secondary button color */
-    border-color: #6c757d;
-  }
-  
-  .booking-form .back-button:hover {
-    background-color: #5a6268; /* Darker gray on hover */
-  }
-
-/* Modal Container */
-.modal-container {
+/* Overlay */
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -278,37 +171,46 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1000; /* Ensure the overlay is above other content */
 }
 
-/* Modal Content */
-.modal-content {
+.booking-form-container {
   background: #fff;
-  padding: 20px;
   border-radius: 8px;
-  width: 90%;
+  padding: 20px;
   max-width: 600px;
+  width: 100%;
   position: relative;
 }
 
-/* Backdrop */
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+.booking-form .close-button {
+  position: absolute;
+  top: 5px; /* Adjusted position */
+  right: 5px; /* Adjusted position */
+  background: #f0932b; /* Orange background color to match the button */
+  border: none; /* No border */
+  border-radius: 50%; /* Circular shape */
+  width: 25px; /* Slightly smaller width */
+  height: 25px; /* Slightly smaller height */
+  font-size: 1rem; /* Slightly smaller font size for the close icon */
+  color: #fff; /* White color for the close icon */
+  display: flex; /* Center icon */
+  justify-content: center; /* Center icon horizontally */
+  align-items: center; /* Center icon vertically */
+  cursor: pointer;
+  padding: 0; /* Remove default padding */
+  text-align: center;
 }
 
-/* Keyframes */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.booking-form .close-button:hover {
+  background: #d9801f; /* Darker orange on hover */
+  color: #fff; /* Text color remains white on hover */
 }
-
-@keyframes fadeInMessage {
-  from { opacity: 0; }
-  to { opacity: 1; }
+#contact {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #4a4a49;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff;
 }

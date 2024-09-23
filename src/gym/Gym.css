@@ -1,131 +1,302 @@
-/* src/styles.css */
+/* Gym.css */
 
-/* General Styles */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f2f5; /* Light gray background for the whole page */
-  color: #333; /* Dark text color for readability */
-  margin: 0;
-  padding: 0;
-}
-
-/* Carousel Styles */
-.carousel-img {
-  object-fit: cover; /* Ensure images cover the container */
-  height: 500px; /* Adjust to fit your design */
-  transition: opacity 0.5s ease-in-out;
-}
-
-.carousel-item {
-  transition: transform 0.5s ease;
-}
-
-.carousel-item-next,
-.carousel-item-prev,
-.carousel-item.active {
-  transition: transform 0.5s ease;
-}
-
-/* Card Styles */
-.card-style {
-  width: 18rem; /* Fixed card width */
-  margin-bottom: 1.5rem; /* Space between cards */
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card-style:hover {
-  transform: scale(1.05); /* Slightly enlarge card on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
-}
-
-.card-img {
-  height: 200px; /* Adjust to fit your design */
-  object-fit: cover; /* Ensure images cover the container */
-  transition: opacity 0.5s ease;
-}
-
-.card-img:hover {
-  opacity: 0.9; /* Slightly fade image on hover */
-}
-
-/* Footer Styles */
-.footer {
-  background-color: #343a40; /* Dark background for footer */
-  padding: 1rem 0;
-  border-top: 1px solid #e9ecef;
-  color: #fff; /* White text color for footer */
-}
-
-.footer h5 {
-  margin-bottom: 1rem;
-}
-
-/* Booking Page Styles */
-.booking-form {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #000; /* Black background for booking page */
-  color: #fff; /* White text color for booking page */
-}
-
-.booking-form h1 {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.booking-form .form-group {
-  margin-bottom: 15px;
-}
-
-.booking-form label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.booking-form input,
-.booking-form select {
+/* Slider Container */
+.slider-container {
+  position: relative;
   width: 100%;
-  padding: 8px;
-  border: 1px solid #666; /* Darker border color */
-  border-radius: 4px;
-  background: #333; /* Dark background for inputs */
-  color: #fff; /* White text color for inputs */
+  max-width: 1200px; /* Adjust based on your layout */
+  margin: auto;
+  overflow: hidden;
+  border-radius: 15px; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
 }
 
-.booking-form button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  background: #007bff; /* Primary button color */
+/* Slider Image */
+.slider-img {
+  width: 100%; /* Full width to fit the container */
+  height: 500px; /* Common height for all images */
+  object-fit: cover; /* Maintain aspect ratio, fill container */
+  display: block;
+  transition: opacity 0.5s ease-in-out; /* Smooth transition */
+}
+
+/* Navigation Buttons */
+.slider-button {
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
   color: white;
-  font-size: 16px;
+  border: none;
   cursor: pointer;
-  margin-top: 10px;
-  transition: background 0.3s ease;
+  font-size: 24px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
-.booking-form button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+.prev {
+  left: 10px;
 }
 
-.booking-form .message {
-  color: #28a745; /* Green color for success message */
-  font-weight: bold;
+.next {
+  right: 10px;
+}
+
+.slider-button:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Darker background on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .slider-button {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+  }
+
+  .slider-img {
+    height: 400px; /* Adjust height for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .slider-button {
+    width: 35px;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 35px;
+  }
+
+  .slider-img {
+    height: 300px; /* Adjust height for even smaller screens */
+  }
+}
+/* Booking Form Container */
+/* Booking Form */
+.booking-form-1 {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 60%; /* 60% width of the page */
+  height: 100%; /* 60% height of the page */
+  max-width: 600px; /* Max width constraint */ 
+  margin: auto; /* Center the form horizontally and vertically */
+  position: absolute;
+  top: 80px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+
+/* Form Title */
+.booking-form-1 h1 {
+  font-size: 1.8rem; /* Slightly smaller title font size */
+  font-weight: 600;
+  color: #333; /* Darker color for the title */
+  margin-bottom: 10px; /* Reduced margin for the title */
   text-align: center;
 }
 
-.booking-form .back-button {
+/* Form Group */
+.form-group-1, .form-group-2, .form-group-3, .form-group-4, .form-group-5, .form-group-6, .form-group-7 {
+  margin-bottom: 10px; /* Space between form groups */
+}
+
+/* Form Labels */
+.gym-label {
+  display: block;
+  font-size: 1rem; /* Adjusted font size */
+  color: #555; /* Slightly darker color for labels */
+  margin-bottom: 3px; /* Reduced margin below labels */
+}
+
+/* Form Inputs and Textareas */
+.booking-form-1 input,
+.booking-form-1 select,
+.booking-form-1 textarea {
+  width: 100%;
+  padding: 8px; /* Reduced padding */
+  border: 1px solid #ddd;
+  border-radius: 6px; /* Maintain the border-radius */
+  font-size: 0.9rem; /* Smaller font size */
+  box-sizing: border-box; /* Ensures padding and border are included in the element's width */
+}
+
+.booking-form-1 textarea {
+  height: 60px; /* Reduced height for a shorter textarea */
+}
+
+/* Button */
+.booking-form-1 .button {
+  background-color: #f0932b; /* Orange background color to match the booking button */
+  border: none;
+  border-radius: 6px; /* Slightly smaller border-radius */
+  color: #fff;
+  padding: 8px; /* Reduced padding */
+  cursor: pointer;
+  font-size: 1rem; /* Slightly smaller font size */
+  width: 100%;
+  margin-top: 10px; /* Reduced space above the button */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.booking-form-1 .button:hover {
+  background-color: #d9801f; /* Darker orange on hover */
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+/* card and this container*/
+.mt-4-4 {
+  margin-top: 4rem;
+  background-color: #555;
+}
+.d-flex {
+  background-color: #333;
+  color: #ced4da;
+}
+.card-style-1, .card-style-2 ,.card-style-3{
+  background-color: #555;
+  color: #ced4da;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-style-1:hover, .card-style-2:hover, .card-style-3:hover {
+  transform: scale(1.05); /* Zoom in effect on hover */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Increase shadow size on hover */
+
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Success Message */
+.booking-form-1 .success-message {
+  color: #28a745;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 10px; /* Reduced margin above the success message */
+}
+
+/* Close Button (for overlay) */
+.booking-form-1 .close-button {
+  position: absolute;
+  top: 5px; /* Adjusted position */
+  right: 5px; /* Adjusted position */
+  background: #f0932b; /* Orange background color to match the button */
+  border: none; /* No border */
+  border-radius: 50%; /* Circular shape */
+  width: 25px; /* Slightly smaller width */
+  height: 25px; /* Slightly smaller height */
+  font-size: 1rem; /* Slightly smaller font size for the close icon */
+  color: #fff; /* White color for the close icon */
+  display: flex; /* Center icon */
+  justify-content: center; /* Center icon horizontally */
+  align-items: center; /* Center icon vertically */
+  cursor: pointer;
+  padding: 0; /* Remove default padding */
+  text-align: center;
+}
+
+.booking-form-1 .close-button:hover {
+  background: #d9801f; /* Darker orange on hover */
+  color: #fff; /* Text color remains white on hover */
+}
+
+/* Input Fields */
+input[type="date"], input[type="time"], input[type="text"], input[type="email"], input[type="tel"], select {
+  width: 100%; /* Full width of the container */
+  padding: 10px;
+  border: 1px solid #ced4da; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  font-size: 16px;
+}
+
+input[type="date"], input[type="time"] {
+  height: 38px; /* Ensure consistency in height */
+}
+
+select {
+  height: 38px; /* Ensure consistency in height */
+}
+
+/* Submit Button */
+button[type="submit"] {
+  background-color: #007bff; /* Primary color for the button */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%; /* Full width button */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Success Message */
+.message-1 {
+  color: #28a745; /* Success green color */
+  font-size: 16px;
+  text-align: center;
   margin-top: 20px;
-  background-color: #6c757d; /* Secondary button color */
-  border-color: #6c757d;
 }
 
-.booking-form .back-button:hover {
-  background-color: #5a6268; /* Darker gray on hover */
+/* Back to Home Button */
+.back-button-1 {
+  display: block;
+  width: 100%; /* Full width button */
+  margin-top: 20px; /* Space above the button */
 }
 
+.back-button-1 {
+  background-color: #6c757d; /* Secondary color */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.back-button-1:hover {
+  background-color: #5a6268; /* Darker shade on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .booking-form-1 {
+    padding: 15px;
+  }
+
+  button[type="submit"], .back-button-1 {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}

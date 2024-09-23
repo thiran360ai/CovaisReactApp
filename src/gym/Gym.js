@@ -1,83 +1,80 @@
 import React, { useState } from 'react';
-import './Gym.css'; 
-import { Container, Row, Col, Button, Card, Carousel, Modal, Form } from 'react-bootstrap';
+import { Container, Button, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import photo1 from './imgs/pho1.jpeg';
-import photo2 from './imgs/pho2.jpeg';
-import photo3 from './imgs/pho3.jpeg';
-import photo4 from './imgs/pho4.jpeg';
-import photo5 from './imgs/pho5.jpeg';
-import photo6 from './imgs/pho6.jpeg';
+import './Gym.css'; // Import your updated CSS file
+import photo1 from './asset/imgs/pho1.jpeg';
+import photo2 from './asset/imgs/pho2.jpeg';
+import photo3 from './asset/imgs/pho3.jpeg';
+import photo4 from './asset/imgs/pho4.jpeg';
+import photo5 from './asset/imgs/pho5.jpeg';
+import photo6 from './asset/imgs/pho6.jpeg';
 
 const Gym = () => {
   const [showBookingPage, setShowBookingPage] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  if (showBookingPage) {
-    return <BookingPage handleBackToHomeClick={() => setShowBookingPage(false)} />;
-  }
+  const photos = [photo1, photo2, photo3, photo4];
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % photos.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + photos.length) % photos.length);
+  };
 
   return (
     <div>
-      {/* Slider Component */}
-      <Carousel>
-        <Carousel.Item>
-          <img className="d-block w-100 carousel-img" src={photo1} alt="First slide" />
-          <Carousel.Caption>
-            <h3>Welcome to Our Gym</h3>
-            <p>Get fit with the best equipment and trainers.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img className="d-block w-100 carousel-img" src={photo2} alt="Second slide" />
-          <Carousel.Caption>
-            <h3>State-of-the-Art Equipment</h3>
-            <p>We offer the latest in fitness technology.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img className="d-block w-100 carousel-img" src={photo3} alt="Third slide" />
-          <Carousel.Caption>
-            <h3>Expert Trainers</h3>
-            <p>Our trainers are here to guide you every step of the way.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-
-      {/* Card Component */}
-      <Container className="mt-4">
-        <div className="d-flex justify-content-around flex-wrap">
-          <Card className="card-style">
-            <Card.Img variant="top" src={photo5} className="card-img" />
-            <Card.Body>
-              <Card.Title>Personal Training</Card.Title>
-              <Card.Text>
-                Personal training is a personalized approach to fitness that provides tailored guidance, motivation, and accountability to help individuals achieve their specific health goals.
-              </Card.Text>
-              <Button variant="primary" onClick={() => setShowBookingPage(true)}>Book Now</Button>
-            </Card.Body>
-          </Card>
-          <Card className="card-style">
-            <Card.Img variant="top" src={photo4} className="card-img" />
-            <Card.Body>
-              <Card.Title>Group Classes</Card.Title>
-              <Card.Text>
-                Motivating group sessions led by expert instructors. Select classes that align with your fitness level, interests, and goals and help individuals to achieve health goals.
-              </Card.Text>
-              <Button variant="primary" onClick={() => setShowBookingPage(true)}>Book Now</Button>
-            </Card.Body>
-          </Card>
-          <Card className="card-style">
-            <Card.Img variant="top" src={photo6} className="card-img" />
-            <Card.Body>
-              <Card.Title>Nutritional Guidance</Card.Title>
-              <Card.Text>
-                Customized diet plans for optimal health and fitness. Encourage a balanced intake of carbohydrates, proteins, fats, vitamins, and minerals to support overall health.
-              </Card.Text>
-              <Button variant="primary" onClick={() => setShowBookingPage(true)}>Book Now</Button>
-            </Card.Body>
-          </Card>
+      {showBookingPage ? (
+        <div className="booking-page-container-1">
+          <BookingPage handleBackToHomeClick={() => setShowBookingPage(false)} />
         </div>
-      </Container>
+      ) : (
+        <div>
+          {/* Image Slider Component */}
+          <div className="slider-container">
+            <button className="slider-button prev" onClick={prevSlide}>❮</button>
+            <img className="slider-img" src={photos[currentIndex]} alt={`Slide ${currentIndex + 1}`} />
+            <button className="slider-button next" onClick={nextSlide}>❯</button>
+          </div>
+
+          {/* Card Component */}
+          <Container className="mt-4-4">
+            <div className="d-flex justify-content-around flex-wrap">
+              <Card className="card-style-1">
+                <Card.Img variant="top" src={photo5} className="card-img-1" />
+                <Card.Body>
+                  <Card.Title>Personal Training</Card.Title>
+                  <Card.Text>
+                    Personal training is a personalized approach to fitness that provides tailored guidance, motivation, and accountability to help individuals achieve their specific health goals.
+                  </Card.Text>
+                  <Button variant="primary" onClick={() => setShowBookingPage(true)}>Book Now</Button>
+                </Card.Body>
+              </Card>
+              <Card className="card-style-2">
+                <Card.Img variant="top" src={photo6} className="card-img-2" />
+                <Card.Body>
+                  <Card.Title>Group Classes</Card.Title>
+                  <Card.Text>
+                    Motivating group sessions led by expert instructors. Select classes that align with your fitness level, interests, and goals and help individuals to achieve health goals.
+                  </Card.Text>
+                  <Button variant="primary" onClick={() => setShowBookingPage(true)}>Book Now</Button>
+                </Card.Body>
+              </Card>
+              <Card className="card-style-3">
+                <Card.Img variant="top" src={photo4} className="card-img-3" />
+                <Card.Body>
+                  <Card.Title>Nutritional Guidance</Card.Title>
+                  <Card.Text>
+                    Customized diet plans for optimal health and fitness. Encourage a balanced intake of carbohydrates, proteins, fats, vitamins, and minerals to support overall health.
+                  </Card.Text>
+                  <Button variant="primary" onClick={() => setShowBookingPage(true)}>Book Now</Button>
+                </Card.Body>
+              </Card>
+            </div>
+          </Container>
+        </div>
+      )}
     </div>
   );
 };
@@ -120,11 +117,11 @@ const BookingPage = ({ handleBackToHomeClick }) => {
   };
 
   return (
-    <div className="booking-form">
+    <div className="booking-form-1">
       <h1>Gym Booking Page</h1>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="date">Date:</label>
+        <div className="form-group-1">
+          <label className='gym-label' htmlFor="date">Date:</label>
           <input 
             type="date" 
             id="date" 
@@ -133,8 +130,8 @@ const BookingPage = ({ handleBackToHomeClick }) => {
             required 
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="time">Time:</label>
+        <div className="form-group-2">
+          <label className='gym-label' htmlFor="time">Time:</label>
           <input 
             type="time" 
             id="time" 
@@ -143,8 +140,8 @@ const BookingPage = ({ handleBackToHomeClick }) => {
             required 
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="classType">Class Type:</label>
+        <div className="form-group-3">
+          <label className='gym-label' htmlFor="classType">Class Type:</label>
           <select 
             id="classType" 
             value={classType} 
@@ -152,13 +149,13 @@ const BookingPage = ({ handleBackToHomeClick }) => {
             required
           >
             <option value="">Select a class</option>
-            <option value="yoga">Yoga</option>
-            <option value="pilates">Pilates</option>
-            <option value="spinning">Spinning</option>
+            <option value="Personal Training">Personal Training</option>
+            <option value="Group Classes">Group Classes</option>
+            <option value="Nutritional Guidance">Nutritional Guidance</option>
           </select>
         </div>
-        <div className="form-group">
-          <label htmlFor="trainer">Trainer:</label>
+        <div className="form-group-4">
+          <label className='gym-label' htmlFor="trainer">Trainer:</label>
           <select 
             id="trainer" 
             value={trainer} 
@@ -168,10 +165,11 @@ const BookingPage = ({ handleBackToHomeClick }) => {
             <option value="">Select a trainer</option>
             <option value="john">John Doe</option>
             <option value="jane">Jane Smith</option>
+            <option value="Irfan">Irfan Pathan</option>
           </select>
         </div>
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
+        <div className="form-group-5">
+          <label className='gym-label' htmlFor="name">Name:</label>
           <input 
             type="text" 
             id="name" 
@@ -180,8 +178,8 @@ const BookingPage = ({ handleBackToHomeClick }) => {
             required 
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
+        <div className="form-group-6">
+          <label className='gym-label' htmlFor="email">Email:</label>
           <input 
             type="email" 
             id="email" 
@@ -190,8 +188,8 @@ const BookingPage = ({ handleBackToHomeClick }) => {
             required 
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="phone">Phone:</label>
+        <div className="form-group-7">
+          <label className='gym-label' htmlFor="phone">Phone:</label>
           <input 
             type="tel" 
             id="phone" 
@@ -202,8 +200,8 @@ const BookingPage = ({ handleBackToHomeClick }) => {
         </div>
         <button type="submit">Book Now</button>
       </form>
-      {message && <p className="message">{message}</p>}
-      <Button variant="secondary" onClick={handleBackToHomeClick} className="back-button">Back to Home</Button>
+      {message && <p className="message-1">{message}</p>}
+      <Button variant="secondary" onClick={handleBackToHomeClick} className="back-button-1">Back to Home</Button>
     </div>
   );
 };

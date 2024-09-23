@@ -1,265 +1,321 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav, Card, Container, Button, Carousel, Form } from 'react-bootstrap';
-import logo from './image/bg1.jpg'; // Import your logo file
-import './hotal.css'; // Import your CSS file
-import image from './image/image 1.jpg';
-import image2 from './image/nkm.jpg';
-import image3 from './image/pic.jpg';
+import './hotel.css'; 
+import image1 from './image/nk.jpg';
+import image2 from './image/image 1.jpg';
+import image3 from './image/image 3.jpg'; 
+import image4 from './image/nkm.jpg';
+import image5 from './image/image 2.webp';
+import image6 from './image/navin.jpg';
 
-const Hotal = () => {
+// Carousel images
+import carouselImg1 from './image/background.jpg';
+import carouselImg2 from './image/navin (2).jpg';
+import carouselImg3 from './image/bg1.jpg';
+import carouselImg4 from './image/pic1.jpg'; // Placeholder for an additional carousel image
+
+const hotelsData = [
+  { id: 1, name: 'Hotel A', location: 'City A', price: 50, rating: 2.5, image: image1, latitude: 51.505, longitude: -0.09 },
+  { id: 2, name: 'Hotel B', location: 'City B', price: 150, rating: 3.0, image: image2, latitude: 51.515, longitude: -0.1 },
+  { id: 3, name: 'Hotel C', location: 'City C', price: 300, rating: 3.8, image: image3, latitude: 51.525, longitude: -0.11 },
+  { id: 4, name: 'Hotel D', location: 'City D', price: 450, rating: 4.2, image: image4, latitude: 51.535, longitude: -0.12 },
+  { id: 5, name: 'Hotel E', location: 'City E', price: 550, rating: 4.4, image: image5, latitude: 51.565, longitude: -0.12 },
+  { id: 6, name: 'Hotel F', location: 'City F', price: 700, rating: 5.0, image: image6, latitude: 51.565, longitude: -0.12 },
+];
+
+function HotelWebsite() {
+
   const [showBookingPage, setShowBookingPage] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    roomType: 'Standard Room',
-    dates: ''
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const photos = [carouselImg4,carouselImg3,carouselImg2,carouselImg1];
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % photos.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + photos.length) % photos.length);
+  }
+  const [searchCriteria, setSearchCriteria] = useState({
+    location: '',
+  });
+  const [filterCriteria, setFilterCriteria] = useState({
+    priceRange: [0, 1000],
+    rating: 0,
+  });
+  const [selectedHotel, setSelectedHotel] = useState(null);
+  const [bookingDetails, setBookingDetails] = useState({
+    checkInDate: '',
+    checkOutDate: '',
+    numberOfGuests: 1,
+    numberOfRooms: 1,
+    location: '',
   });
 
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData(prevData => ({
-      ...prevData,
-      [id]: value
-    }));
-  };
-
-  const handleSubmit = (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
-    const { name, email, roomType, dates } = formData;
-    const message = `*Booking Confirmation*\n\nName: ${name}\nEmail: ${email}\nRoom Type: ${roomType}\nDates: ${dates}`;
-    const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    setSearchCriteria({
+      location: e.target.location.value.toLowerCase(),
+    });
   };
 
-  const BookingPage = ({ handleBackToHomeClick }) => (
-    <div className="booking-form">
-      <h1>𝐁𝐨𝐨𝐤 𝐘𝐨𝐮𝐫 𝐒𝐭𝐚𝐲</h1>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="name">
-          <Form.Label>Full Name</Form.Label>
-          <Form.Control 
-            type="text" 
-            placeholder="Enter your full name" 
-            value={formData.name} 
-            onChange={handleChange} 
-          />
-        </Form.Group>
-        <Form.Group controlId="email">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control 
-            type="email" 
-            placeholder="Enter your email" 
-            value={formData.email} 
-            onChange={handleChange} 
-          />
-        </Form.Group>
-        <Form.Group controlId="roomType">
-          <Form.Label>Room Type</Form.Label>
-          <Form.Control 
-            as="select" 
-            value={formData.roomType} 
-            onChange={handleChange}
-          >
-            <option>Standard Room</option>
-            <option>Suite Room</option>
-            <option>Deluxe Room</option>
-          </Form.Control>
-        </Form.Group>
-        <Form.Group controlId="dates">
-          <Form.Label>Check-in and Check-out Dates</Form.Label>
-          <Form.Control 
-            type="text" 
-            placeholder="Enter check-in and check-out dates" 
-            value={formData.dates} 
-            onChange={handleChange} 
-          />
-        </Form.Group>
-        <Button type="submit">Submit</Button>
-        <Button type="button" onClick={handleBackToHomeClick}>Back to Home</Button>
-      </Form>
-    </div>
-  );
+  const handleFilter = (criteria) => {
+    setFilterCriteria(criteria);
+  };
 
-  if (showBookingPage) {
-    return <BookingPage handleBackToHomeClick={() => setShowBookingPage(false)} />;
-  }
+  const handleShowModal = (hotel) => {
+    setSelectedHotel(hotel);
+    setBookingDetails({
+      ...bookingDetails,
+      location: hotel.location,
+    });
+  };
+
+  const handleCloseModal = () => {
+    setSelectedHotel(null);
+  };
+
+  const handleBookingChange = (e) => {
+    setBookingDetails({
+      ...bookingDetails,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleBookingSubmit = (e) => {
+    e.preventDefault();
+    alert('Booking confirmed!');
+    setSelectedHotel(null);
+  };
+
+  const filteredAndSearchedHotels = hotelsData
+    .filter(hotel =>
+      hotel.price >= filterCriteria.priceRange[0] &&
+      hotel.price <= filterCriteria.priceRange[1] &&
+      hotel.rating >= filterCriteria.rating &&
+      (hotel.location.toLowerCase().includes(searchCriteria.location) || hotel.name.toLowerCase().includes(searchCriteria.location))
+    );
 
   return (
-    <div className="App">
-      <Navbar bg="dark" variant="dark" expand="lg">
-        <Container>
-          <Navbar.Brand href="#home">
-            <img
-              src={logo}
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-              alt="Hotel Logo"
-            />
-            {' '}
-            𝐋𝐔𝐗𝐔𝐑𝐘 𝐇𝐎𝐓𝐄𝐋
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ml-auto">
-              <Nav.Link href="#home">𝐇𝐨𝐦𝐞</Nav.Link>
-              <Nav.Link href="#about">𝐀𝐛𝐨𝐮𝐭</Nav.Link>
-              <Nav.Link href="#contact">𝐂𝐨𝐧𝐭𝐚𝐜𝐭</Nav.Link>
-              <Nav.Link href="#rooms">𝐑𝐨𝐨𝐦𝐬</Nav.Link>
-              <Button><span>𝐋𝐎𝐆𝐈𝐍</span></Button>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
-      {/* Carousel Section */}
-      <Container className="mt-4">
-        <Carousel>
-          <Carousel.Item>
-            <img className="d-block w-100" src={image} alt="First slide" />
-            <Carousel.Caption>
-              <h3>𝐓𝐚𝐣 𝐋𝐮𝐱𝐮𝐫𝐲 𝐇𝐨𝐭𝐞𝐥</h3>
-              <p>The sheer magnificence of the architecture of these palaces transforms even the most casual stroll into an experience encompassing eras.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img className="d-block w-100" src={image2} alt="Second slide" />
-            <Carousel.Caption>
-              <h3>𝐀𝐛𝐨𝐮𝐭 𝐔𝐬</h3>
-              <p>Taj Luxury Hotels is a chain of luxury hotels and a subsidiary of the Indian Hotels Company Limited, headquartered in Mumbai, India.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img className="d-block w-100" src={image3} alt="Third slide" />
-            <Carousel.Caption>
-              <h3></h3>
-              <p>The jewel of Muslim art in India and one of the universally admired masterpieces of the world's heritage.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-        </Carousel>
-      </Container>
-
-      {/* Content Section */}
-      <Container className="mt-4">
-        <h1>---𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐭𝐨 𝐎𝐮𝐫 𝐇𝐨𝐭𝐞𝐥---</h1>
-        <hr />
-
-        <div className="row">
-          <div className="col-md-4 mb-4">
-            <Card className="animated-card">
-              <Card.Img variant="top" src={image2} />
-              <Card.Body>
-                <Card.Title>𝐒𝐓𝐀𝐍𝐃𝐀𝐑𝐃 𝐑𝐎𝐎𝐌</Card.Title>
-                <Card.Text>A standard room is one of the cheapest hotel rooms, and usually includes a double or queen bed.</Card.Text>
-                <Button onClick={() => setShowBookingPage(true)}> <span>𝐁𝐨𝐨𝐤 𝐍𝐨𝐰</span></Button>
-              </Card.Body>
-            </Card>
+    <div className="hotel-website-container">
+      <h1 className="text-center title">Hotel</h1>
+      {/* Image Slider Component */}
+      <div className="slider-container">
+            <button className="slider-button prev" onClick={prevSlide}>❮</button>
+            <img className="slider-img" src={photos[currentIndex]} alt={`Slide ${currentIndex + 1}`} />
+            <button className="slider-button next" onClick={nextSlide}>❯</button>
           </div>
 
-          <div className="col-md-4 mb-4">
-            <Card className="animated-card">
-              <Card.Img variant="top" src={image} />
-              <Card.Body>
-                <Card.Title>𝐒𝐔𝐈𝐓𝐄 𝐑𝐎𝐎𝐌</Card.Title>
-                <Card.Text>A set of connected rooms, especially in a hotel. The singer was interviewed in his hotel suite Room.</Card.Text>
-                <div className="d-flex justify-content-center">
-                  <Button onClick={() => setShowBookingPage(true)}><span>𝐁𝐨𝐨𝐤 𝐍𝐨𝐰</span></Button>
-                </div>
-              </Card.Body>
-            </Card>
-          </div>
-
-          <div className="col-md-4 mb-4">
-            <Card className="animated-card">
-              <Card.Img variant="top" src={image3} />
-              <Card.Body>
-                <Card.Title>𝐃𝐄𝐋𝐔𝐗𝐄 𝐑𝐎𝐎𝐌</Card.Title>
-                <Card.Text>Deluxe rooms are usually larger than their standard counterparts, may include a bathtub and a shower in the bathroom.</Card.Text>
-                <div className="d-flex justify-content-center">
-                  <Button onClick={() => setShowBookingPage(true)}><span>𝐁𝐨𝐨𝐤 𝐍𝐨𝐰</span></Button>
-                </div>
-              </Card.Body>
-            </Card>
-          </div>
-        </div>
-
-        {/* Room Service Details Section */}
-        <div className="row mt-4">
-          <div className="col-md-12">
-            <Card>
-              <Card.Body>
-                <Card.Title>𝐑𝐨𝐨𝐦 𝐒𝐞𝐫𝐯𝐢𝐜𝐞 𝐃𝐞𝐚𝐭𝐢𝐥𝐬</Card.Title>
-                <Card.Text>
-                  Our hotel offers a variety of room services to make your stay more comfortable:
-                  <ul>
-                    <li>24/7 Room Service</li>
-                    <li>Special Dining Requests</li>
-                    <li>Laundry and Dry Cleaning</li>
-                    <li>Concierge Services</li>
-                  </ul>
-                </Card.Text>
-                <div className="d-flex justify-content-center">
-                  <Button><span>𝐄𝐱𝐩𝐥𝐨𝐫𝐞 𝐌𝐨𝐫𝐞</span></Button>
-                </div>
-              </Card.Body>
-            </Card>
-          </div>
-        </div>
-
-        {/* Manager Details Section */}
-        <div className="row mt-4">
-          <div className="col-md-12">
-            <Card>
-              <Card.Body>
-                <Card.Title>𝐌𝐚𝐧𝐚𝐠𝐞𝐫 𝐃𝐞𝐭𝐚𝐢𝐥𝐬</Card.Title>
-                <Card.Text>
-                  For any inquiries or assistance during your stay, please contact our manager:
-                  <ul>
-                    <li>Chief Manager: Mathew</li>
-                    <li>Email: managermathew@enquiry.com</li>
-                    <li>Phone: +91 9876543210</li>
-                  </ul>
-                </Card.Text>
-                <div className="d-flex justify-content-center">
-                  <Button><span>𝐂𝐨𝐧𝐭𝐚𝐜𝐭 𝐌𝐚𝐧𝐚𝐠𝐞𝐫</span></Button>
-                </div>
-              </Card.Body>
-            </Card>
-          </div>
-        </div>
-
-        {/* Footer Section */}
-        <footer className="mt-5 pt-5 border-top">
-          <Container>
-            <div className="row">
-              <div className="col-lg-6 col-md-12">
-                <h5>𝐂𝐨𝐧𝐭𝐚𝐜𝐭 𝐮𝐬</h5>
-                <p>For booking inquiries: <a href="mailto:booking@example.com">booking@tajrooms.com</a></p>
-                <p>Phone: +91 7898898654</p>
+      <section className="search-section">
+        <div className="form-and-filter-container">
+          <form className='hotel-form' onSubmit={handleSearch}>
+            <div className="form-row search-form">
+              <div className="col-md-3 form-group">
+                <label htmlFor="location" className="form-label">Location</label>
+                <input
+                  type="text"
+                  id="location"
+                  name="location"
+                  className="form-control search-input"
+                  placeholder="Enter city or hotel name"
+                  required
+                />
               </div>
-              <div className="col-lg-6 col-md-12">
-                <h5>𝐂𝐨𝐧𝐭𝐚𝐜𝐭 𝐮𝐬</h5>
-                <p>𝐅𝐨𝐫 𝐛𝐨𝐨𝐤𝐢𝐧𝐠 𝐢𝐧𝐪𝐮𝐢𝐫𝐢𝐞𝐬: <a href="mailto:booking@example.com">booking@tajrooms.com</a></p>
-                <p>𝐏𝐡𝐨𝐧𝐞: +91 7898898654</p>
+              <div className="col-md-3 form-group">
+                <label htmlFor="checkInDate" className="form-label">Check-in Date</label>
+                <input
+                  type="date"
+                  id="checkInDate"
+                  name="checkInDate"
+                  className="form-control search-input"
+                  placeholder="Select check-in date"
+                  required
+                />
               </div>
-              <div className="col-lg-6 col-md-12">
-                <h5>𝐀𝐝𝐝𝐫𝐞𝐬𝐬</h5>
-                <p>Taj Luxury Hotel, Gabriella Street, Mumbai, India</p>
+              <div className="col-md-3 form-group">
+                <label htmlFor="checkOutDate" className="form-label">Check-out Date</label>
+                <input
+                  type="date"
+                  id="checkOutDate"
+                  name="checkOutDate"
+                  className="form-control search-input"
+                  placeholder="Select check-out date"
+                  required
+                />
+              </div>
+              <div className="col-md-2 form-group">
+                <label htmlFor="guests" className="form-label">Guests</label>
+                <input
+                  type="number"
+                  id="guests"
+                  name="guests"
+                  className="form-control search-input"
+                  placeholder="Number of guests"
+                  min="1"
+                  defaultValue={1}
+                  required
+                />
+              </div>
+              <div className="col-md-2 form-group">
+                <label htmlFor="rooms" className="form-label">Rooms</label>
+                <input
+                  type="number"
+                  id="rooms"
+                  name="rooms"
+                  className="form-control search-input"
+                  placeholder="Number of rooms"
+                  min="1"
+                  defaultValue={1}
+                  required
+                />
+              </div>
+              <div className="col-md-2 form-group">
+                <button type="submit" className="btn btn-primary search-button btn-block">
+                  Search
+                </button>
               </div>
             </div>
-          </Container>
-        </footer>
+          </form>
 
-        <section id="contact" className="mt-4">
-          <h2>𝐂𝐨𝐧𝐭𝐚𝐜𝐭 𝐔𝐬</h2>
-          <p>
-            𝐅𝐨𝐫 𝐁𝐨𝐨𝐤𝐢𝐧𝐠: 𝐭𝐚𝐣𝐥𝐮𝐱𝐮𝐫𝐲_𝐡𝐨𝐭𝐞𝐥@𝐠𝐦𝐚𝐢𝐥.𝐨𝐫𝐠
-          </p>
-        </section>
-      </Container>
+          <section className="filter-section">
+            <h3 className="filter-title">Filter Results</h3>
+            <div className="form-group filter-price">
+              <label htmlFor="priceRange">Price Range</label>
+              <input
+                type="range"
+                id="priceRange"
+                min="0"
+                max="1000"
+                className="form-control-range filter-price-range"
+                value={filterCriteria.priceRange[1]}
+                onChange={(e) => handleFilter({ ...filterCriteria, priceRange: [0, parseInt(e.target.value)] })}
+              />
+              <div className="d-flex justify-content-between">
+                <span>Price: ${filterCriteria.priceRange[0]}</span>
+                <span>${filterCriteria.priceRange[1]}</span>
+              </div>
+            </div>
+            <div className="form-group filter-rating">
+              <label htmlFor="rating">Rating</label>
+              <input
+                type="number"
+                id="rating"
+                min="0"
+                max="5"
+                className="form-control filter-rating-input"
+                value={filterCriteria.rating}
+                onChange={(e) => handleFilter({ ...filterCriteria, rating: parseFloat(e.target.value) })}
+                placeholder="Rating"
+              />
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section className="hotel-results-section">
+        <div className="row hotel-boxes">
+          {filteredAndSearchedHotels.map(hotel => (
+            <div className="col-md-4 hotel-box" key={hotel.id}>
+              <div className="hotel-image-container">
+                <img src={hotel.image} alt={hotel.name} className="hotel-image" />
+              </div>
+              <div className="hotel-info">
+                <h3 className="hotel-name">{hotel.name}</h3>
+                <p className="hotel-location">{hotel.location}</p>
+                <p className="hotel-price">Price: ${hotel.price}</p>
+                <p className="hotel-rating">Rating: {hotel.rating} Stars</p>
+                <button className="btn btn-primary book-now-button" onClick={() => handleShowModal(hotel)}>Book Now</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {selectedHotel && (
+        <div className="modal fade show" style={{ display: 'block' }} tabIndex="-1" role="dialog">
+          <div className="modal-dialog modal-lg" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">{selectedHotel.name}</h5>
+                <button type="button" className="close" aria-label="Close" onClick={handleCloseModal}>
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <form onSubmit={handleBookingSubmit}>
+                  <div className="form-row">
+                    <div className="col-md-6 form-group">
+                      <label htmlFor="location">Location</label>
+                      <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        className="form-control"
+                        value={bookingDetails.location}
+                        readOnly
+                      />
+                    </div>
+                    <div className="col-md-6 form-group">
+                      <label htmlFor="checkInDate">Check-in Date</label>
+                      <input
+                        type="date"
+                        id="checkInDate"
+                        name="checkInDate"
+                        className="form-control"
+                        value={bookingDetails.checkInDate}
+                        onChange={handleBookingChange}
+                        required
+                      />
+                    </div>
+                    <div className="col-md-6 form-group">
+                      <label htmlFor="checkOutDate">Check-out Date</label>
+                      <input
+                        type="date"
+                        id="checkOutDate"
+                        name="checkOutDate"
+                        className="form-control"
+                        value={bookingDetails.checkOutDate}
+                        onChange={handleBookingChange}
+                        required
+                      />
+                    </div>
+                    <div className="col-md-6 form-group">
+                      <label htmlFor="numberOfGuests">Number of Guests</label>
+                      <input
+                        type="number"
+                        id="numberOfGuests"
+                        name="numberOfGuests"
+                        className="form-control"
+                        value={bookingDetails.numberOfGuests}
+                        onChange={handleBookingChange}
+                        min="1"
+                        required
+                      />
+                    </div>
+                    <div className="col-md-6 form-group">
+                      <label htmlFor="numberOfRooms">Number of Rooms</label>
+                      <input
+                        type="number"
+                        id="numberOfRooms"
+                        name="numberOfRooms"
+                        className="form-control"
+                        value={bookingDetails.numberOfRooms}
+                        onChange={handleBookingChange}
+                        min="1"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <button type="submit" className="btn btn-primary">Confirm Booking</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-export default Hotal;
+export default HotelWebsite;

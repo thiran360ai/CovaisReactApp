@@ -1,12 +1,9 @@
-
 import React, { useState, memo } from 'react';
 import './spa.css'; // Import the CSS file
 import massageImg from './image/massage.jpg';
 import facialImg from './image/facial.jpg';
 import headImg from './image/head.jpg';
 import HeroSectionImg from './image/background.jpg';
-
-
 
 // Main App Component
 function App() {
@@ -28,7 +25,11 @@ function App() {
       <Feedback />
       <ContactForm />
       {showBookingForm && (
-        <BookingForm onClose={handleCloseBookingForm} />
+        <div className="overlay">
+          <div className="booking-form-container">
+            <BookingForm onClose={handleCloseBookingForm} />
+          </div>
+        </div>
       )}
     </div>
   );
@@ -180,25 +181,16 @@ function ContactForm() {
       <h2 className="contact-title">Contact Us</h2>
       <p className="contact-description">Get in touch with us to book your spa session.</p>
       <div className="contact-info">
-        <p>Phone: [6381343407]</p>
-        <p>Email: [gowthamkowsalya20@gmail.com]</p>
-        <p>Address: [gobichettipalayam,athani]</p>
+        <p>Company : THE BOYZ</p>
+        <p>Email: theboyz@gmail.com</p>
+        <p>Address: Gobichettipalayam,Tamilnadu</p>
       </div>
     </section>
   );
 }
 
 // BookingForm Component
-
-
-
-
-// BookingForm Compone
-
-
-
-
-const BookingForm = ({ handleBackToHomeClick }) => {
+const BookingForm = ({ onClose }) => {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [classType, setClassType] = useState('');
@@ -225,7 +217,7 @@ const BookingForm = ({ handleBackToHomeClick }) => {
     `;
 
     // Construct WhatsApp URL
-    const whatsappNumber = '6381343407'; // The recipient's number
+    const whatsappNumber = '9894039885'; // The recipient's number
     const whatsappMessage = encodeURIComponent(`Booking has been confirmed. ${confirmationMessage}`);
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
@@ -268,9 +260,9 @@ const BookingForm = ({ handleBackToHomeClick }) => {
             required
           >
             <option value="">Select a class</option>
-            <option value="facial">facial</option>
-            <option value="headmassage">headmessage</option>
-            <option value="body massage">bodymassage</option>
+            <option value="facial">Facial</option>
+            <option value="headmassage">Head Massage</option>
+            <option value="bodymassage">Body Massage</option>
           </select>
         </div>
         <div className="form-group">
@@ -316,12 +308,12 @@ const BookingForm = ({ handleBackToHomeClick }) => {
             required 
           />
         </div>
-        <button type="submit">Book Now</button>
+        <button type="submit">Confirm Booking</button>
       </form>
-      {message && <p className="message">{message}</p>}
-     
+      {message && <p className="success-message">{message}</p>}
+      <button onClick={onClose} className="close-button">X</button>
     </div>
   );
 };
 
-export default BookingForm;
+export default App;

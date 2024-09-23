@@ -1,34 +1,108 @@
 :root {
   --surface-color: #fff;
   --curve: 40;
+  --primary-color: #1a73e8;
+  --secondary-color: #ff4081;
+  --background-dark: #121212;
+  --background-light: #282c34;
+  --input-background: #333;
+  --input-border: #444;
+  --input-focus-border: #1a73e8;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  
-
 }
 
 body {
-/* Remove default padding */
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   background-image: url('./img/bbackimg.jpg');
-  background-size: cover; /* Ensure the image covers the entire screen */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.loader {
+  transform: rotateZ(45deg);
+  perspective: 1000px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: #fff;
+  position: relative;
+}
+
+.loader:before,
+.loader:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  transform: rotateX(70deg);
+  animation: spin 1s linear infinite;
+}
+
+.loader:after {
+  color: var(--secondary-color);
+  transform: rotateY(70deg);
+  animation-delay: .4s;
+}
+
+@keyframes spin {
+  0%, 100% {
+    box-shadow: .2em 0px 0 0px currentcolor;
+  }
+  12% {
+    box-shadow: .2em .2em 0 0 currentcolor;
+  }
+  25% {
+    box-shadow: 0 .2em 0 0px currentcolor;
+  }
+  37% {
+    box-shadow: -.2em .2em 0 0 currentcolor;
+  }
+  50% {
+    box-shadow: -.2em 0 0 0 currentcolor;
+  }
+  62% {
+    box-shadow: -.2em -.2em 0 0 currentcolor;
+  }
+  75% {
+    box-shadow: 0px -.2em 0 0 currentcolor;
+  }
+  87% {
+    box-shadow: .2em -.2em 0 0 currentcolor;
+  }
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #fff;
+}
+
+.loading h2 {
+  margin-top: 16px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1rem; /* Reduce the padding to make the header shorter */
+  padding: 0.5rem 1rem;
   background: #333;
   color: #fff;
   position: fixed;
@@ -36,22 +110,22 @@ body {
   top: 0;
   left: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for better separation */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .header .logo {
-  max-height: 40px; /* Adjust logo size if needed */
+  max-height: 40px;
   border-radius: 50px;
 }
 
 .header .navbar a {
-  font-size: 0.9rem; /* Adjust font size for the navbar links if needed */
-  margin: 0 0.5rem; /* Adjust margin between links if needed */
+  font-size: 0.9rem;
+  margin: 0 0.5rem;
 }
 
 .header .login-button {
-  padding: 0.25rem 0.5rem; /* Adjust button padding if needed */
-  font-size: 0.9rem; /* Adjust button font size if needed */
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9rem;
 }
 
 .header-left {
@@ -81,15 +155,19 @@ body {
 }
 
 .login-button {
-  background: #007bff;
+  background: var(--primary-color);
   color: #fff;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-/* Login Popup Styles */
+.login-button:hover {
+  background: var(--secondary-color);
+}
+
 .login-popup {
   position: fixed;
   top: 0;
@@ -99,34 +177,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.8); /* Darker background for better visibility */
-  z-index: 1001; /* Ensure it is on top of other elements */
-}
-
-.card {
-  width: 100%;
-  max-width: 100px;
-  background-image: url('./img/backkiii.jpg');
-  border-radius: 20px;
-  transition: all 0.3s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1001;
 }
 
 .login-card {
-  background: #1a1a1a;
+  background: var(--background-dark);
   border-radius: 20px;
-  padding: 1.5rem;
+  padding: 2rem;
   width: 100%;
-  max-width: 100%;
+  max-width: 400px;
   color: #fff;
   box-shadow: 0 0 30px rgba(0, 255, 117, 0.3);
   position: relative;
-}
-
-.card:hover {
-  box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
 }
 
 .close-button {
@@ -141,7 +204,9 @@ body {
 }
 
 .login-card h2 {
-  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
 .login-card form {
@@ -150,36 +215,49 @@ body {
 }
 
 .login-card input {
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--input-border);
   border-radius: 5px;
+  background-color: var(--input-background);
+  color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.login-card input:focus {
+  border-color: var(--input-focus-border);
+  outline: none;
 }
 
 .login-card button {
-  background: #007bff;
+  background: var(--primary-color);
   color: #fff;
   border: none;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border-radius: 5px;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
-/* Main Content Styles */
+
+.login-card button:hover {
+  background: var(--secondary-color);
+}
+
 .main-content {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 5rem 2rem 2rem; /* Added padding-top to account for fixed header */
-  margin-top: 4rem; /* Offset header height */
+  padding: 5rem 2rem 2rem;
+  margin-top: 4rem;
 }
 
 .nft-card {
   width: 300px;
-  max-width: 1000px; /* Increase this value to make the card wider */
+  max-width: 400px;
   margin: 1rem;
   border: 1px solid #ffffff22;
-  background-color: #282c34;
-  background: linear-gradient(0deg, rgba(40, 44, 52, 1) 0%, rgba(17, 0, 32, .5) 100%);
+  background: linear-gradient(0deg, var(--background-dark) 0%, var(--background-light) 100%);
   box-shadow: 0 7px 20px 5px #00000088;
   border-radius: .7rem;
   backdrop-filter: blur(7px);
@@ -190,17 +268,15 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 1rem; /* Add padding inside the card for spacing */
+  padding: 1rem;
 }
 
 .nft-card:hover {
   border: 1px solid #ffffff44;
   box-shadow: 0 7px 50px 10px #000000aa;
-  transform: scale(1.02); /* Slightly less scaling for a subtle effect */
+  transform: scale(1.02);
   filter: brightness(1.2);
 }
-
-
 
 .nft-card hr {
   width: 100%;
@@ -284,6 +360,60 @@ body {
   object-fit: cover;
   margin: 0;
 }
+
+/* Profile Bar Styling */
+.profile-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f4f4f4;
+  border-radius: 50px;
+  border-bottom: 1px solid #ddd;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.username {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #1a73e8;
+}
+
+.profile-nav {
+  display: flex;
+  gap: 15px;
+}
+
+.profile-nav a {
+  text-decoration: none;
+  color: #333;
+}
+
+.profile-button {
+  background-color: #ff6f61;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 8px 16px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.profile-button:hover {
+  background-color: #e55b50;
+}
+
 
 .nft-card::before {
   position: fixed;
