@@ -6,6 +6,7 @@ import img2 from './img/img (2).jpeg';
 import img3 from './img/img (3).jpeg';
 import img4 from './img/img (4).jpeg';
 import logo from './img/logo.jpg';
+import profile from './img/pros4.jpg';
 import About from './About';
 import Barber from './barber/barber';
 import Hotel from './hotal/Hotal';
@@ -87,7 +88,7 @@ const ProfileContainer = ({ user, onLogout }) => (
     <div className="profile-container">
       <div className="profile-bar">
         <div className="profile-info">
-          <img src={user.avatar || logo} alt="User Avatar" className="user-avatar" />
+          <img src={user.avatar || profile} alt="User Avatar" className="user-avatar" />
           <span className="username">{user.username}</span>
         </div>
         <nav className="profile-nav">
